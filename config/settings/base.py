@@ -4,7 +4,9 @@ Base settings to build other settings files upon.
 
 import environ
 
-ROOT_DIR = environ.Path(__file__) - 3  # (planfood/config/settings/base.py - 3 = planfood/)
+ROOT_DIR = (
+    environ.Path(__file__) - 3
+)  # (planfood/config/settings/base.py - 3 = planfood/)
 APPS_DIR = ROOT_DIR.path('planfood')
 
 env = environ.Env()
@@ -38,9 +40,7 @@ USE_TZ = True
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
-DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres:///planfood'),
-}
+DATABASES = {'default': env.db('DATABASE_URL', default='postgres:///planfood')}
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 # URLS
@@ -79,9 +79,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # MIGRATIONS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
-MIGRATION_MODULES = {
-    'sites': 'planfood.contrib.sites.migrations'
-}
+MIGRATION_MODULES = {'sites': 'planfood.contrib.sites.migrations'}
 
 # AUTHENTICATION
 # ------------------------------------------------------------------------------
@@ -111,17 +109,11 @@ PASSWORD_HASHERS = [
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'
     },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
 # MIDDLEWARE
@@ -144,9 +136,7 @@ STATIC_ROOT = str(ROOT_DIR('staticfiles'))
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
-STATICFILES_DIRS = [
-    str(APPS_DIR.path('static')),
-]
+STATICFILES_DIRS = [str(APPS_DIR.path('static'))]
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -168,9 +158,7 @@ TEMPLATES = [
         # https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-TEMPLATES-BACKEND
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # https://docs.djangoproject.com/en/dev/ref/settings/#template-dirs
-        'DIRS': [
-            str(APPS_DIR.path('templates')),
-        ],
+        'DIRS': [str(APPS_DIR.path('templates'))],
         'OPTIONS': {
             # https://docs.djangoproject.com/en/dev/ref/settings/#template-debug
             'debug': DEBUG,
@@ -192,7 +180,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
-    },
+    }
 ]
 # http://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -200,23 +188,21 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # FIXTURES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#fixture-dirs
-FIXTURE_DIRS = (
-    str(APPS_DIR.path('fixtures')),
-)
+FIXTURE_DIRS = (str(APPS_DIR.path('fixtures')),)
 
 # EMAIL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
-EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
+EMAIL_BACKEND = env(
+    'DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend'
+)
 
 # ADMIN
 # ------------------------------------------------------------------------------
 # Django Admin URL.
 ADMIN_URL = 'admin/'
 # https://docs.djangoproject.com/en/dev/ref/settings/#admins
-ADMINS = [
-    ("""Vitalii Sventyi""", 'vsventy@gmail.com'),
-]
+ADMINS = [("""Vitalii Sventyi""", 'vsventy@gmail.com')]
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
 
