@@ -14,7 +14,7 @@ run_ci () {
   py.test
 
   # Check style:
-  black --check .
+  black -S --check .
 
   # Check that all migrations worked fine:
   python manage.py makemigrations --dry-run --check
