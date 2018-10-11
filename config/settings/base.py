@@ -71,6 +71,10 @@ THIRD_PARTY_APPS = [
 ]
 LOCAL_APPS = [
     'planfood.users.apps.UsersAppConfig',
+    'planfood.common',
+    'planfood.dishes',
+    'planfood.menu',
+    'planfood.products',
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

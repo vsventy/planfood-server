@@ -3,6 +3,7 @@ import pytest
 from planfood.users.forms import UserCreationForm
 from planfood.users.tests.factories import UserFactory
 
+
 pytestmark = pytest.mark.django_db
 
 
