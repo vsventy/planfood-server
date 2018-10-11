@@ -13,6 +13,9 @@ run_ci () {
   mypy planfood
   py.test
 
+  # Sort imports
+  isort -rc ./planfood
+
   # Check style:
   black -S --check .
 

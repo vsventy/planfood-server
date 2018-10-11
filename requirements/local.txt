@@ -19,6 +19,7 @@ coverage==4.5.1  # https://github.com/nedbat/coveragepy
 # Code formatting
 # ------------------------------------------------------------------------------
 black==18.6b4  # https://github.com/ambv/black
+isort==4.3.4  # https://github.com/timothycrosley/isort
 
 # Django
 # ------------------------------------------------------------------------------
