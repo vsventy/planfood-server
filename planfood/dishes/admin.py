@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Dish, DishItem, Output
+from .models import Dish, Output
 
 
 class OutputInline(admin.TabularInline):
@@ -10,11 +10,6 @@ class OutputInline(admin.TabularInline):
 @admin.register(Dish)
 class DishAdmin(admin.ModelAdmin):
     inlines = [OutputInline]
-
-
-@admin.register(DishItem)
-class DishItemAdmin(admin.ModelAdmin):
-    list_display = ('menu_day', 'period')
 
 
 @admin.register(Output)

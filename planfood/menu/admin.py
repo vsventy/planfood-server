@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from planfood.dishes.models import DishItem
+from planfood.menu.models import DishItem
 
 from .models import MenuDay, NumberOfPersons
 
@@ -18,6 +18,11 @@ class MenuDayAdmin(admin.ModelAdmin):
     list_display = ('date', 'status')
     readonly_fields = ('status_changed',)
     inlines = [NumberOfPersonsInline, DishItemInline]
+
+
+@admin.register(DishItem)
+class DishItemAdmin(admin.ModelAdmin):
+    list_display = ('menu_day', 'period')
 
 
 @admin.register(NumberOfPersons)

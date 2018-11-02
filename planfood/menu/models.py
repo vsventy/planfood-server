@@ -11,10 +11,10 @@ from planfood.common.models import AgeCategory, Group
 
 
 class MenuDay(StatusModel, TimeStampedModel):
-    STATUS = Choices('draft', 'published')
+    STATUS = Choices(('draft', _('draft')), ('published', _('published')))
     uuid = models.UUIDField(db_index=True, default=uuid_lib.uuid4, editable=False)
-    date = models.DateField()
-    status = StatusField()
+    date = models.DateField(verbose_name=_('Date'))
+    status = StatusField(verbose_name=_('Status'))
 
     class Meta:
         verbose_name_plural = _('Menu days')
@@ -55,3 +55,32 @@ class NumberOfPersons(TimeStampedModel):
 
     def __str__(self):
         return '%s (%s)' % (self.menu_day, self.value)
+
+
+class DishItem(TimeStampedModel):
+    PERIOD = Choices(
+        (0, 'breakfast', _('Breakfast')),
+        (1, 'lunch', _('Lunch')),
+        (2, 'tea', _('Tea')),
+        (3, 'dinner', _('Dinner')),
+    )
+    menu_day = models.ForeignKey(
+        MenuDay,
+        verbose_name=_('Menu day'),
+        blank=True,
+        null=True,
+        related_name='dish_items',
+        on_delete=models.SET_NULL,
+    )
+    dishes = models.ManyToManyField(
+        'dishes.Dish', verbose_name=_('Dishes'), blank=True, related_name='dish_items'
+    )
+    uuid = models.UUIDField(db_index=True, default=uuid_lib.uuid4, editable=False)
+    period = models.IntegerField(verbose_name=_('Period'), choices=PERIOD)
+
+    class Meta:
+        verbose_name_plural = _('Set of dishes')
+        verbose_name = _('Dish item')
+
+    def __str__(self):
+        return '%s (%s)' % (self.menu_day.date, self.PERIOD[self.period])
