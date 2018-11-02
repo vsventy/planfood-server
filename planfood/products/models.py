@@ -18,7 +18,7 @@ class Product(TimeStampedModel):
     )
     uuid = models.UUIDField(db_index=True, default=uuid_lib.uuid4, editable=False)
     item_number = models.CharField(
-        verbose_name='Item number', unique=True, max_length=100
+        verbose_name=_('Item number'), unique=True, max_length=100
     )
     name = models.CharField(verbose_name=_('Name'), max_length=255)
     unit = models.IntegerField(verbose_name=_('Unit'), choices=UNIT)
@@ -53,7 +53,7 @@ class Norm(TimeStampedModel):
         on_delete=models.SET_NULL,
     )
     product = models.ForeignKey(
-        Product, verbose_name='Product', related_name='norms', on_delete=models.CASCADE
+        Product, verbose_name=_('Product'), related_name='norms', on_delete=models.CASCADE
     )
     uuid = models.UUIDField(db_index=True, default=uuid_lib.uuid4, editable=False)
     value = models.IntegerField(verbose_name=_('Value'))

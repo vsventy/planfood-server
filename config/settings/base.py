@@ -4,6 +4,9 @@ Base settings to build other settings files upon.
 
 import environ
 
+from django.utils.translation import gettext_lazy as _
+
+
 ROOT_DIR = (
     environ.Path(__file__) - 3
 )  # (planfood/config/settings/base.py - 3 = planfood/)
@@ -26,7 +29,9 @@ DEBUG = env.bool('DJANGO_DEBUG', False)
 # In Windows, this must be set to your system time zone.
 TIME_ZONE = 'Europe/Kiev'
 # https://docs.djangoproject.com/en/dev/ref/settings/#language-code
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'uk'
+LANGUAGES = [('uk', _('Ukrainian')), ('en', _('English'))]
+LOCALE_PATHS = [ROOT_DIR.path('locale')]
 # https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
 # https://docs.djangoproject.com/en/dev/ref/settings/#use-i18n
@@ -72,10 +77,10 @@ THIRD_PARTY_APPS = [
 ]
 LOCAL_APPS = [
     'planfood.users.apps.UsersAppConfig',
-    'planfood.common',
-    'planfood.dishes',
-    'planfood.menu',
-    'planfood.products',
+    'planfood.common.apps.CommonConfig',
+    'planfood.dishes.apps.DishesConfig',
+    'planfood.menu.apps.MenuAppConfig',
+    'planfood.products.apps.ProductsConfig',
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -127,6 +132,7 @@ AUTH_PASSWORD_VALIDATORS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
