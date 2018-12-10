@@ -53,7 +53,10 @@ class Norm(TimeStampedModel):
         on_delete=models.SET_NULL,
     )
     product = models.ForeignKey(
-        Product, verbose_name=_('Product'), related_name='norms', on_delete=models.CASCADE
+        Product,
+        verbose_name=_('Product'),
+        related_name='norms',
+        on_delete=models.CASCADE,
     )
     uuid = models.UUIDField(db_index=True, default=uuid_lib.uuid4, editable=False)
     value = models.IntegerField(verbose_name=_('Value'))
