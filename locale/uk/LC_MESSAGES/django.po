@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-02 15:42+0200\n"
+"POT-Creation-Date: 2018-12-03 12:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,7 +27,7 @@ msgstr "Українська"
 msgid "English"
 msgstr "Англійська"
 
-#: config/urls.py:11 config/urls.py:12
+#: config/urls.py:11 config/urls.py:12 planfood/templates/base.html:42
 msgid "Plan Food"
 msgstr "Облік харчування"
 
@@ -42,13 +42,13 @@ msgstr "Загальне"
 #: planfood/common/models.py:11 planfood/common/models.py:24
 #: planfood/dishes/models.py:19 planfood/products/models.py:23
 msgid "Name"
-msgstr "Ім'я"
+msgstr "Назва"
 
 #: planfood/common/models.py:15
 msgid "Age categories"
 msgstr "Вікові категорії"
 
-#: planfood/common/models.py:16 planfood/dishes/models.py:62
+#: planfood/common/models.py:16 planfood/dishes/models.py:32
 #: planfood/menu/models.py:30 planfood/products/models.py:41
 msgid "Age category"
 msgstr "Вікова категорія"
@@ -57,63 +57,30 @@ msgstr "Вікова категорія"
 msgid "Groups"
 msgstr "Групи"
 
-#: planfood/common/models.py:29 planfood/dishes/models.py:70
+#: planfood/common/models.py:29 planfood/dishes/models.py:40
 #: planfood/menu/models.py:38 planfood/products/models.py:49
 msgid "Group"
 msgstr "Група"
 
 #: planfood/dishes/apps.py:7 planfood/dishes/models.py:22
-#: planfood/dishes/models.py:45
+#: planfood/menu/models.py:76
 msgid "Dishes"
 msgstr "Страви"
 
-#: planfood/dishes/models.py:23 planfood/dishes/models.py:78
+#: planfood/dishes/models.py:23 planfood/dishes/models.py:48
 msgid "Dish"
 msgstr "Страва"
 
-#: planfood/dishes/models.py:31
-msgid "Breakfast"
-msgstr "Сніданок"
-
-#: planfood/dishes/models.py:32
-msgid "Lunch"
-msgstr "Обід"
-
-#: planfood/dishes/models.py:33
-msgid "Tea"
-msgstr "Підвечірок"
-
-#: planfood/dishes/models.py:34
-msgid "Dinner"
-msgstr "Вечеря"
-
-#: planfood/dishes/models.py:38 planfood/menu/models.py:21
-#: planfood/menu/models.py:46
-msgid "Menu day"
-msgstr "Меню-день"
-
-#: planfood/dishes/models.py:48
-msgid "Period"
-msgstr "Період"
-
-#: planfood/dishes/models.py:52
-msgid "Set of dishes"
-msgstr "Набір страв"
-
-#: planfood/dishes/models.py:53
-msgid "Dish item"
-msgstr "Позиція страви"
-
-#: planfood/dishes/models.py:85 planfood/menu/models.py:50
+#: planfood/dishes/models.py:55 planfood/menu/models.py:50
 #: planfood/products/models.py:59
 msgid "Value"
 msgstr "Значення"
 
-#: planfood/dishes/models.py:88
+#: planfood/dishes/models.py:58
 msgid "Output values"
 msgstr "Вихід-значення"
 
-#: planfood/dishes/models.py:89
+#: planfood/dishes/models.py:59
 msgid "Output value"
 msgstr "Вихід-значення"
 
@@ -141,6 +108,11 @@ msgstr "Статус"
 msgid "Menu days"
 msgstr "Меню-дні"
 
+#: planfood/menu/models.py:21 planfood/menu/models.py:46
+#: planfood/menu/models.py:69
+msgid "Menu day"
+msgstr "Меню-день"
+
 #: planfood/menu/models.py:53
 msgid "Numbers of persons"
 msgstr "Кількість осіб"
@@ -148,6 +120,34 @@ msgstr "Кількість осіб"
 #: planfood/menu/models.py:54
 msgid "Number of persons"
 msgstr "Кількість осіб"
+
+#: planfood/menu/models.py:62
+msgid "Breakfast"
+msgstr "Сніданок"
+
+#: planfood/menu/models.py:63
+msgid "Lunch"
+msgstr "Обід"
+
+#: planfood/menu/models.py:64
+msgid "Tea"
+msgstr "Підвечірок"
+
+#: planfood/menu/models.py:65
+msgid "Dinner"
+msgstr "Вечеря"
+
+#: planfood/menu/models.py:79
+msgid "Period"
+msgstr "Період"
+
+#: planfood/menu/models.py:82
+msgid "Set of dishes"
+msgstr "Набір страв"
+
+#: planfood/menu/models.py:83
+msgid "Dish item"
+msgstr "Позиція страви"
 
 #: planfood/products/apps.py:7 planfood/products/models.py:31
 msgid "Products"
@@ -171,7 +171,7 @@ msgstr "л"
 
 #: planfood/products/models.py:21
 msgid "Item number"
-msgstr "№"
+msgstr "№ (номенклатурний)"
 
 #: planfood/products/models.py:24
 msgid "Unit"
@@ -446,9 +446,17 @@ msgid ""
 "mail address</a>."
 msgstr ""
 
+#: planfood/templates/base.html:47
+msgid "Home"
+msgstr "Головна"
+
+#: planfood/templates/base.html:50
+msgid "About"
+msgstr "Про сайт"
+
 #: planfood/templates/base.html:55
 msgid "My Profile"
-msgstr ""
+msgstr "Мій профіль"
 
 #: planfood/users/apps.py:8
 msgid "Users"
@@ -460,4 +468,4 @@ msgstr ""
 
 #: planfood/users/models.py:11
 msgid "Name of User"
-msgstr ""
+msgstr "Ім'я користувача"
