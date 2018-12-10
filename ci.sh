@@ -9,15 +9,15 @@ pyclean () {
 }
 
 run_ci () {
+  # Compile message files
+  django-admin compilemessages
+
   # Run tests:
   mypy planfood
   py.test
 
-  # Sort imports
-  isort -rc ./planfood
-
   # Check style:
-  black -S --check .
+  black -S --exclude migrations --check .
 
   # Check that all migrations worked fine:
   python manage.py makemigrations --dry-run --check
