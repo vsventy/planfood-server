@@ -1,10 +1,11 @@
 from django.conf import settings
-from django.urls import include, path
+from django.urls import include, path, re_path
 from django.utils.translation import ugettext_lazy as _
 from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
+from django.views.generic.base import RedirectView
 from django.views import defaults as default_views
 
 
@@ -21,6 +22,10 @@ urlpatterns = [
     path("users/", include("planfood.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
+    re_path(
+        r'^favicon\.ico$',
+        RedirectView.as_view(url='/static/images/favicons/favicon.ico'),
+    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += i18n_patterns(
