@@ -1,4 +1,5 @@
 import uuid as uuid_lib
+from decimal import Decimal
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -23,7 +24,10 @@ class Product(TimeStampedModel):
     name = models.CharField(verbose_name=_('Name'), max_length=255)
     unit = models.IntegerField(verbose_name=_('Unit'), choices=UNIT)
     unit_price = models.DecimalField(
-        verbose_name=_('Unit price'), max_digits=10, decimal_places=2
+        verbose_name=_('Unit price'),
+        max_digits=10,
+        decimal_places=2,
+        default=Decimal('0.00'),
     )
 
     class Meta:
