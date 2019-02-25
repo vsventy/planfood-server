@@ -36,38 +36,4 @@ class Product(TimeStampedModel):
         verbose_name = _('Product')
 
     def __str__(self):
-        return '%s (%s)' % (self.name, self.item_number)
-
-
-class Norm(TimeStampedModel):
-    age_category = models.ForeignKey(
-        AgeCategory,
-        verbose_name=_('Age category'),
-        blank=True,
-        null=True,
-        related_name='norms',
-        on_delete=models.SET_NULL,
-    )
-    group = models.ForeignKey(
-        Group,
-        verbose_name=_('Group'),
-        blank=True,
-        null=True,
-        related_name='norms',
-        on_delete=models.SET_NULL,
-    )
-    product = models.ForeignKey(
-        Product,
-        verbose_name=_('Product'),
-        related_name='norms',
-        on_delete=models.CASCADE,
-    )
-    uuid = models.UUIDField(db_index=True, default=uuid_lib.uuid4, editable=False)
-    value = models.IntegerField(verbose_name=_('Value'))
-
-    class Meta:
-        verbose_name_plural = _('Norms')
-        verbose_name = _('Norm')
-
-    def __str__(self):
-        return self.product.name
+        return '%s - %s' % (self.item_number, self.name)

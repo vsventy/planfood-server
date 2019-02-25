@@ -3,11 +3,7 @@ from django.contrib import admin
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
-from .models import Norm, Product
-
-
-class NormInline(admin.TabularInline):
-    model = Norm
+from .models import Product
 
 
 class ProductResource(resources.ModelResource):
@@ -30,9 +26,3 @@ class ProductResource(resources.ModelResource):
 class ProductAdmin(ImportExportModelAdmin):
     list_display = ('item_number', 'name', 'unit', 'unit_price')
     resource_class = ProductResource
-    inlines = [NormInline]
-
-
-@admin.register(Norm)
-class NormAdmin(admin.ModelAdmin):
-    list_display = ('product', 'age_category', 'group', 'value')

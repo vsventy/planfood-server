@@ -30,3 +30,16 @@ class Group(TimeStampedModel):
 
     def __str__(self):
         return self.name
+
+
+class DishType(TimeStampedModel):
+    uuid = models.UUIDField(db_index=True, default=uuid_lib.uuid4, editable=False)
+    name = models.CharField(verbose_name=_('Name'), max_length=255)
+
+    class Meta:
+        ordering = ['name']
+        verbose_name_plural = _('Dish types')
+        verbose_name = _('Dish type')
+
+    def __str__(self):
+        return self.name
