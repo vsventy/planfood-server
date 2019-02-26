@@ -97,6 +97,15 @@ ADMIN_URL = env('DJANGO_ADMIN_URL')
 # ------------------------------------------------------------------------------
 INSTALLED_APPS += ['gunicorn']  # noqa F405
 
+
+# STATIC
+# ------------------------------------------------------------------------------
+STATIC_ROOT = env('DJANGO_STATIC_ROOT', default=str(APPS_DIR('staticfiles')))
+
+# MEDIA
+# ------------------------------------------------------------------------------
+MEDIA_ROOT = env('DJANGO_MEDIA_ROOT', default=str(APPS_DIR('media')))
+
 # raven
 # ------------------------------------------------------------------------------
 # https://docs.sentry.io/clients/python/integrations/django/
