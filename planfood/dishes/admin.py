@@ -14,11 +14,7 @@ class OutputInline(admin.TabularInline):
 
 @admin.register(Dish)
 class DishAdmin(admin.ModelAdmin):
-    fields = (
-        'name',
-        'dish_type',
-        'products'
-    )
+    fields = ('name', 'dish_type', 'products')
     list_display = ('name', 'dish_type', 'products_count')
     list_filter = ('dish_type',)
     filter_horizontal = ('products',)

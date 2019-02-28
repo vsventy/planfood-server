@@ -14,12 +14,13 @@ class Dish(TimeStampedModel):
     products = models.ManyToManyField(
         Product, verbose_name=_('Products'), blank=True, related_name='dishes'
     )
-    dish_type = models.OneToOneField(
+    dish_type = models.ForeignKey(
         DishType,
         verbose_name=_('Dish type'),
         blank=True,
         null=True,
-        on_delete=models.SET_NULL
+        related_name='dishes',
+        on_delete=models.SET_NULL,
     )
     uuid = models.UUIDField(db_index=True, default=uuid_lib.uuid4, editable=False)
     name = models.CharField(verbose_name=_('Name'), max_length=255)
@@ -70,10 +71,7 @@ class Output(TimeStampedModel):
 
 class Norm(TimeStampedModel):
     dish = models.ForeignKey(
-        Dish,
-        verbose_name=_('Dish'),
-        related_name='norms',
-        on_delete=models.CASCADE,
+        Dish, verbose_name=_('Dish'), related_name='norms', on_delete=models.CASCADE
     )
     product = models.ForeignKey(
         Product,
@@ -81,7 +79,7 @@ class Norm(TimeStampedModel):
         blank=True,
         null=True,
         related_name='norms',
-        on_delete=models.SET_NULL
+        on_delete=models.SET_NULL,
     )
     age_category = models.ForeignKey(
         AgeCategory,
