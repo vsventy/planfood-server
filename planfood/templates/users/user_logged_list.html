@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% block title %}Logged Users{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h3>Logged Users</h3>
+
+  <ul class="list-group">
+    {% for user in user_list %}
+      <li class="list-group-item">
+        <a href="{% url 'users:detail' user.username %}">
+          <h5 class="list-group-item-heading">{{ user.username }}</h5>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+
+</div>
+{% endblock content %}
