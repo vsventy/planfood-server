@@ -31,7 +31,7 @@ class Product(TimeStampedModel):
     )
 
     class Meta:
-        ordering = ['item_number']
+        ordering = ['name']
         verbose_name_plural = _('Products')
         verbose_name = _('Product')
 
