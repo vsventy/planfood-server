@@ -6,10 +6,12 @@ from .models import Dish, Norm, Output
 
 class NormInline(admin.TabularInline):
     model = Norm
+    min_num = 2
 
 
 class OutputInline(admin.TabularInline):
     model = Output
+    min_num = 2
 
 
 @admin.register(Dish)
