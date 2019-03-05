@@ -46,3 +46,17 @@ class DishType(TimeStampedModel):
 
     def __str__(self):
         return self.name
+
+
+class ProductCategory(TimeStampedModel):
+    uuid = models.UUIDField(db_index=True, default=uuid_lib.uuid4, editable=False)
+    sort = models.IntegerField(verbose_name=_('Sort'), blank=True, null=True)
+    name = models.CharField(verbose_name=_('Name'), max_length=255)
+
+    class Meta:
+        ordering = ['sort', 'name']
+        verbose_name_plural = _('Product categories')
+        verbose_name = _('Product category')
+
+    def __str__(self):
+        return self.name

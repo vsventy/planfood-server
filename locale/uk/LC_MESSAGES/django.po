@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-28 12:30+0200\n"
+"POT-Creation-Date: 2019-03-05 22:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,13 +41,13 @@ msgid "Common"
 msgstr "Загальне"
 
 #: planfood/common/models.py:11 planfood/common/models.py:25
-#: planfood/common/models.py:39
+#: planfood/common/models.py:39 planfood/common/models.py:53
 msgid "Sort"
 msgstr "Сортування"
 
 #: planfood/common/models.py:12 planfood/common/models.py:26
-#: planfood/common/models.py:40 planfood/dishes/models.py:25
-#: planfood/products/models.py:24
+#: planfood/common/models.py:40 planfood/common/models.py:54
+#: planfood/dishes/models.py:26 planfood/products/models.py:33
 msgid "Name"
 msgstr "Назва"
 
@@ -55,8 +55,9 @@ msgstr "Назва"
 msgid "Age categories"
 msgstr "Вікові категорії"
 
-#: planfood/common/models.py:17 planfood/dishes/models.py:38
-#: planfood/dishes/models.py:88 planfood/menu/models.py:30
+#: planfood/common/models.py:17 planfood/dishes/models.py:39
+#: planfood/dishes/models.py:86 planfood/menu/models.py:30
+#: planfood/products/models.py:62
 msgid "Age category"
 msgstr "Вікова категорія"
 
@@ -64,8 +65,9 @@ msgstr "Вікова категорія"
 msgid "Groups"
 msgstr "Групи"
 
-#: planfood/common/models.py:31 planfood/dishes/models.py:46
-#: planfood/dishes/models.py:96 planfood/menu/models.py:38
+#: planfood/common/models.py:31 planfood/dishes/models.py:47
+#: planfood/dishes/models.py:94 planfood/menu/models.py:38
+#: planfood/products/models.py:70
 msgid "Group"
 msgstr "Група"
 
@@ -77,47 +79,56 @@ msgstr "Типи страв"
 msgid "Dish type"
 msgstr "Тип страви"
 
-#: planfood/dishes/admin.py:30
+#: planfood/common/models.py:58
+msgid "Product categories"
+msgstr "Категорії продуктів"
+
+#: planfood/common/models.py:59 planfood/products/models.py:23
+#: planfood/products/models.py:54
+msgid "Product category"
+msgstr "Категорія продукту"
+
+#: planfood/dishes/admin.py:28
 msgid "Number of Products"
 msgstr "Кількість продуктів"
 
-#: planfood/dishes/apps.py:7 planfood/dishes/models.py:28
+#: planfood/dishes/apps.py:7 planfood/dishes/models.py:29
 #: planfood/menu/models.py:76
 msgid "Dishes"
 msgstr "Страви"
 
 #: planfood/dishes/models.py:15 planfood/products/apps.py:7
-#: planfood/products/models.py:35
+#: planfood/products/models.py:44
 msgid "Products"
 msgstr "Продукти"
 
-#: planfood/dishes/models.py:29 planfood/dishes/models.py:54
+#: planfood/dishes/models.py:30 planfood/dishes/models.py:55
 #: planfood/dishes/models.py:74
 msgid "Dish"
 msgstr "Страва"
 
-#: planfood/dishes/models.py:61 planfood/dishes/models.py:104
-#: planfood/menu/models.py:50
+#: planfood/dishes/models.py:62 planfood/dishes/models.py:102
+#: planfood/menu/models.py:50 planfood/products/models.py:78
 msgid "Value"
 msgstr "Значення"
 
-#: planfood/dishes/models.py:64
+#: planfood/dishes/models.py:65
 msgid "Output values"
 msgstr "Вихід-значення"
 
-#: planfood/dishes/models.py:65
+#: planfood/dishes/models.py:66
 msgid "Output value"
 msgstr "Вихід-значення"
 
-#: planfood/dishes/models.py:80 planfood/products/models.py:36
+#: planfood/dishes/models.py:78 planfood/products/models.py:45
 msgid "Product"
 msgstr "Продукт"
 
-#: planfood/dishes/models.py:111
+#: planfood/dishes/models.py:109
 msgid "Norms"
 msgstr "Норми"
 
-#: planfood/dishes/models.py:112
+#: planfood/dishes/models.py:110
 msgid "Norm"
 msgstr "Норма"
 
@@ -202,15 +213,15 @@ msgstr "б."
 msgid "Liter"
 msgstr "л"
 
-#: planfood/products/models.py:22
+#: planfood/products/models.py:31
 msgid "Item number"
 msgstr "№ (номенклатурний)"
 
-#: planfood/products/models.py:25
+#: planfood/products/models.py:34
 msgid "Unit"
 msgstr "Одиниця"
 
-#: planfood/products/models.py:27
+#: planfood/products/models.py:36
 msgid "Unit price"
 msgstr "Ціна за одиницю"
 
@@ -498,8 +509,3 @@ msgstr "Може переглядати залогінених користув�
 
 #~ msgid "My Profile"
 #~ msgstr "Мій профіль"
-
-#, fuzzy
-#~| msgid "Products"
-#~ msgid "Products count"
-#~ msgstr "Продукти"
