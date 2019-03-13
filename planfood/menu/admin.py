@@ -9,13 +9,15 @@ class DishItemInline(admin.TabularInline):
     model = DishItem
     fields = ('period', 'dishes')
     filter_horizontal = ('dishes',)
-    min_num = 2
+    min_num = 5
+    extra = 0
 
 
 class NumberOfPersonsInline(admin.TabularInline):
     model = NumberOfPersons
     fields = ('group', 'age_category', 'value')
-    min_num = 2
+    min_num = 5
+    extra = 0
 
 
 @admin.register(MenuDay)
