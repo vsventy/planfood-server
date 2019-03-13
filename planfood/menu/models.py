@@ -61,8 +61,9 @@ class DishItem(TimeStampedModel):
     PERIOD = Choices(
         (0, 'breakfast', _('Breakfast')),
         (1, 'lunch', _('Lunch')),
-        (2, 'tea', _('Tea')),
+        (2, 'afternoon_snack', _('Afternoon Snack')),
         (3, 'dinner', _('Dinner')),
+        (4, 'tea', _('Tea')),
     )
     menu_day = models.ForeignKey(
         MenuDay,
