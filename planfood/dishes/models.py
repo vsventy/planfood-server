@@ -26,6 +26,7 @@ class Dish(TimeStampedModel):
     name = models.CharField(verbose_name=_('Name'), max_length=255)
 
     class Meta:
+        ordering = ['name']
         verbose_name_plural = _('Dishes')
         verbose_name = _('Dish')
 

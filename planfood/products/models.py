@@ -80,3 +80,10 @@ class Norm(TimeStampedModel):
         decimal_places=4,
         default=Decimal('0.0000'),
     )
+
+    class Meta:
+        verbose_name_plural = _('Norms')
+        verbose_name = _('Norm')
+
+    def __str__(self):
+        return self.product_category.name

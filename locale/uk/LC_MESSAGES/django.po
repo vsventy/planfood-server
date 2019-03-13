@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-05 22:52+0200\n"
+"POT-Creation-Date: 2019-03-13 21:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,6 +36,14 @@ msgstr "Облік харчування"
 msgid "Site administration"
 msgstr "Адміністрування сайту"
 
+#: planfood/common/admin.py:41 planfood/dishes/admin.py:31
+msgid "Number of Products Norms"
+msgstr "Кількість норм"
+
+#: planfood/common/admin.py:42 planfood/dishes/admin.py:32
+msgid "Number of Products"
+msgstr "Кількість продуктів"
+
 #: planfood/common/apps.py:7
 msgid "Common"
 msgstr "Загальне"
@@ -55,8 +63,8 @@ msgstr "Назва"
 msgid "Age categories"
 msgstr "Вікові категорії"
 
-#: planfood/common/models.py:17 planfood/dishes/models.py:39
-#: planfood/dishes/models.py:86 planfood/menu/models.py:30
+#: planfood/common/models.py:17 planfood/dishes/models.py:40
+#: planfood/dishes/models.py:87 planfood/menu/models.py:30
 #: planfood/products/models.py:62
 msgid "Age category"
 msgstr "Вікова категорія"
@@ -65,8 +73,8 @@ msgstr "Вікова категорія"
 msgid "Groups"
 msgstr "Групи"
 
-#: planfood/common/models.py:31 planfood/dishes/models.py:47
-#: planfood/dishes/models.py:94 planfood/menu/models.py:38
+#: planfood/common/models.py:31 planfood/dishes/models.py:48
+#: planfood/dishes/models.py:95 planfood/menu/models.py:38
 #: planfood/products/models.py:70
 msgid "Group"
 msgstr "Група"
@@ -88,47 +96,46 @@ msgstr "Категорії продуктів"
 msgid "Product category"
 msgstr "Категорія продукту"
 
-#: planfood/dishes/admin.py:28
-msgid "Number of Products"
-msgstr "Кількість продуктів"
-
-#: planfood/dishes/apps.py:7 planfood/dishes/models.py:29
-#: planfood/menu/models.py:76
-msgid "Dishes"
-msgstr "Страви"
+#: planfood/dishes/apps.py:7
+msgid "Card of dishes"
+msgstr "Картотека страв"
 
 #: planfood/dishes/models.py:15 planfood/products/apps.py:7
 #: planfood/products/models.py:44
 msgid "Products"
 msgstr "Продукти"
 
-#: planfood/dishes/models.py:30 planfood/dishes/models.py:55
-#: planfood/dishes/models.py:74
+#: planfood/dishes/models.py:30 planfood/menu/models.py:77
+msgid "Dishes"
+msgstr "Страви"
+
+#: planfood/dishes/models.py:31 planfood/dishes/models.py:56
+#: planfood/dishes/models.py:75
 msgid "Dish"
 msgstr "Страва"
 
-#: planfood/dishes/models.py:62 planfood/dishes/models.py:102
+#: planfood/dishes/models.py:63 planfood/dishes/models.py:103
 #: planfood/menu/models.py:50 planfood/products/models.py:78
 msgid "Value"
 msgstr "Значення"
 
-#: planfood/dishes/models.py:65
+#: planfood/dishes/models.py:66
 msgid "Output values"
 msgstr "Вихід-значення"
 
-#: planfood/dishes/models.py:66
+#: planfood/dishes/models.py:67
 msgid "Output value"
 msgstr "Вихід-значення"
 
-#: planfood/dishes/models.py:78 planfood/products/models.py:45
+#: planfood/dishes/models.py:79 planfood/products/models.py:45
 msgid "Product"
 msgstr "Продукт"
 
-#: planfood/dishes/models.py:109
+#: planfood/dishes/models.py:110 planfood/products/models.py:85
 msgid "Norms"
 msgstr "Норми"
 
-#: planfood/dishes/models.py:110
+#: planfood/dishes/models.py:111 planfood/products/models.py:86
 msgid "Norm"
 msgstr "Норма"
 
@@ -157,7 +164,7 @@ msgid "Menu days"
 msgstr "Меню-дні"
 
 #: planfood/menu/models.py:21 planfood/menu/models.py:46
-#: planfood/menu/models.py:69
+#: planfood/menu/models.py:70
 msgid "Menu day"
 msgstr "Меню-день"
 
@@ -178,22 +185,26 @@ msgid "Lunch"
 msgstr "Обід"
 
 #: planfood/menu/models.py:64
-msgid "Tea"
-msgstr "Підвечірок"
+msgid "Afternoon Snack"
+msgstr "Полуденок"
 
 #: planfood/menu/models.py:65
 msgid "Dinner"
 msgstr "Вечеря"
 
-#: planfood/menu/models.py:79
+#: planfood/menu/models.py:66
+msgid "Tea"
+msgstr "Підвечірок"
+
+#: planfood/menu/models.py:80
 msgid "Period"
 msgstr "Період"
 
-#: planfood/menu/models.py:82
+#: planfood/menu/models.py:83
 msgid "Set of dishes"
 msgstr "Набір страв"
 
-#: planfood/menu/models.py:83
+#: planfood/menu/models.py:84
 msgid "Dish item"
 msgstr "Позиція страви"
 

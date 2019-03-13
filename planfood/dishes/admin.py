@@ -17,7 +17,7 @@ class OutputInline(admin.TabularInline):
 @admin.register(Dish)
 class DishAdmin(admin.ModelAdmin):
     fields = ('name', 'dish_type', 'products')
-    list_display = ('name', 'dish_type', 'products_count')
+    list_display = ('name', 'dish_type', 'products_count', 'norms_count')
     list_filter = ('dish_type',)
     filter_horizontal = ('products',)
     inlines = (OutputInline, NormInline)
@@ -25,14 +25,8 @@ class DishAdmin(admin.ModelAdmin):
     def products_count(self, obj):
         return obj.products.all().count()
 
+    def norms_count(self, obj):
+        return obj.norms.all().count()
+
+    norms_count.short_description = _('Number of Products Norms')  # type: ignore
     products_count.short_description = _('Number of Products')  # type: ignore
-
-
-@admin.register(Output)
-class OutputAdmin(admin.ModelAdmin):
-    list_display = ('dish', 'age_category', 'group', 'value')
-
-
-@admin.register(Norm)
-class NormAdmin(admin.ModelAdmin):
-    list_display = ('dish', 'product', 'age_category', 'group', 'value')

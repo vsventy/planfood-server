@@ -4,4 +4,4 @@ from django.utils.translation import ugettext_lazy as _
 
 class DishesConfig(AppConfig):
     name = 'planfood.dishes'
-    verbose_name = _('Dishes')
+    verbose_name = _('Card of dishes')
