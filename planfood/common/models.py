@@ -21,6 +21,9 @@ class AgeCategory(TimeStampedModel):
 
 
 class Group(TimeStampedModel):
+    age_categories = models.ManyToManyField(
+        AgeCategory, verbose_name=_('Age Categories'), blank=True, related_name='groups'
+    )
     uuid = models.UUIDField(db_index=True, default=uuid_lib.uuid4, editable=False)
     sort = models.IntegerField(verbose_name=_('Sort'), blank=True, null=True)
     name = models.CharField(verbose_name=_('Name'), max_length=255)

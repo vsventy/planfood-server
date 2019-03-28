@@ -18,7 +18,8 @@ class DishTypeAdmin(admin.ModelAdmin):
 
 @admin.register(Group)
 class GroupAdmin(admin.ModelAdmin):
-    pass
+    fields = ('sort', 'name', 'age_categories')
+    filter_horizontal = ('age_categories',)
 
 
 class NormInline(admin.TabularInline):

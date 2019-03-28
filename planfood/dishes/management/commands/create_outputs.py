@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 
-from planfood.common.models import AgeCategory, Group
+from planfood.common.models import Group
 from planfood.dishes.models import Dish, Output
 
 
@@ -12,11 +12,10 @@ class Command(BaseCommand):
 
         dishes = Dish.objects.all()
         groups = Group.objects.all()
-        age_categories = AgeCategory.objects.all()
 
         for dish in dishes.iterator():
             for group in groups.iterator():
-                for age_category in age_categories.iterator():
+                for age_category in group.age_categories.iterator():
 
                     has_output = dish.outputs.filter(
                         group=group, age_category=age_category

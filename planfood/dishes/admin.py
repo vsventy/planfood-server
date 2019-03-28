@@ -1,7 +1,7 @@
 from django.contrib import admin
-from django.core.management import call_command
 from django.utils.translation import ugettext_lazy as _
 
+from planfood.common.models import Group
 from .models import Dish, Norm, Output
 
 
@@ -27,7 +27,6 @@ class DishAdmin(admin.ModelAdmin):
     filter_horizontal = ('products',)
     inlines = (OutputInline, NormInline)
     actions = ['create_norms', 'create_outputs']
-    actions_without_queryset = ['create_norms', 'create_outputs']
 
     def products_count(self, obj):
         return obj.products.all().count()
@@ -43,17 +42,42 @@ class DishAdmin(admin.ModelAdmin):
         )
 
     def create_norms(self, request, queryset):
-        call_command('create_norms')
+        groups = Group.objects.all()
+        for dish in queryset:
+            for group in groups.iterator():
+                for product in dish.products.iterator():
+                    for age_category in group.age_categories.iterator():
+                        has_norm = dish.norms.filter(
+                            product=product, group=group, age_category=age_category
+                        ).exists()
+                        if not has_norm:
+                            norm = Norm.objects.create(
+                                dish=dish,
+                                product=product,
+                                group=group,
+                                age_category=age_category,
+                                value=0.0,
+                            )
 
     def create_outputs(self, request, queryset):
-        call_command('create_outputs')
+        groups = Group.objects.all()
+        for dish in queryset:
+            for group in groups.iterator():
+                for age_category in group.age_categories.iterator():
+                    has_output = dish.outputs.filter(
+                        group=group, age_category=age_category
+                    ).exists()
+                    if not has_output:
+                        output = Output.objects.create(
+                            dish=dish, group=group, age_category=age_category, value='0'
+                        )
 
     norms_count.short_description = _('Number of Products Norms')  # type: ignore
     outputs_count.short_description = _('Number of Products Outputs')  # type: ignore
     products_count.short_description = _('Number of Products')  # type: ignore
-    create_norms.short_description = _(
-        'Creates empty norms for all dishes'
-    )  # type: ignore
-    create_outputs.short_description = _(
-        'Creates empty outputs for all dishes'
-    )  # type: ignore
+    create_norms.short_description = _(  # type: ignore
+        'Creates norms for selected dishes'
+    )
+    create_outputs.short_description = _(  # type: ignore
+        'Creates outputs for selected dishes'
+    )
