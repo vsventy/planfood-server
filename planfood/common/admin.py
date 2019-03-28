@@ -11,11 +11,6 @@ class AgeCategoryAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(DishType)
-class DishTypeAdmin(admin.ModelAdmin):
-    pass
-
-
 @admin.register(Group)
 class GroupAdmin(admin.ModelAdmin):
     fields = ('sort', 'name', 'age_categories')

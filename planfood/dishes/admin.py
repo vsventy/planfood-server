@@ -15,15 +15,8 @@ class OutputInline(admin.TabularInline):
 
 @admin.register(Dish)
 class DishAdmin(admin.ModelAdmin):
-    fields = ('name', 'dish_type', 'products')
-    list_display = (
-        'name',
-        'dish_type',
-        'products_count',
-        'outputs_count',
-        'norms_count',
-    )
-    list_filter = ('dish_type',)
+    fields = ('name', 'products')
+    list_display = ('name', 'products_count', 'outputs_count', 'norms_count')
     filter_horizontal = ('products',)
     inlines = (OutputInline, NormInline)
     actions = ['create_norms', 'create_outputs']
