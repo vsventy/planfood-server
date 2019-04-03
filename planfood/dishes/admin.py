@@ -19,7 +19,7 @@ class DishAdmin(admin.ModelAdmin):
     list_display = ('name', 'products_count', 'outputs_count', 'norms_count')
     filter_horizontal = ('products',)
     inlines = (OutputInline, NormInline)
-    actions = ['create_norms', 'create_outputs']
+    actions = ['create_norms_dishes', 'create_outputs_dishes']
 
     def products_count(self, obj):
         return obj.products.all().count()
@@ -34,7 +34,7 @@ class DishAdmin(admin.ModelAdmin):
             obj.outputs.all().count(), obj.outputs.filter(value='0').count()
         )
 
-    def create_norms(self, request, queryset):
+    def create_norms_dishes(self, request, queryset):
         groups = Group.objects.all()
         for dish in queryset:
             for group in groups.iterator():
@@ -52,7 +52,7 @@ class DishAdmin(admin.ModelAdmin):
                                 value=0.0,
                             )
 
-    def create_outputs(self, request, queryset):
+    def create_outputs_dishes(self, request, queryset):
         groups = Group.objects.all()
         for dish in queryset:
             for group in groups.iterator():
@@ -68,9 +68,9 @@ class DishAdmin(admin.ModelAdmin):
     norms_count.short_description = _('Number of Products Norms')  # type: ignore
     outputs_count.short_description = _('Number of Products Outputs')  # type: ignore
     products_count.short_description = _('Number of Products')  # type: ignore
-    create_norms.short_description = _(  # type: ignore
+    create_norms_dishes.short_description = _(  # type: ignore
         'Creates norms for selected dishes'
     )
-    create_outputs.short_description = _(  # type: ignore
+    create_outputs_dishes.short_description = _(  # type: ignore
         'Creates outputs for selected dishes'
     )

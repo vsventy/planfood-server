@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-28 10:55+0200\n"
+"POT-Creation-Date: 2019-04-03 22:23+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,13 +36,17 @@ msgstr "Облік харчування"
 msgid "Site administration"
 msgstr "Адміністрування сайту"
 
-#: planfood/common/admin.py:42 planfood/dishes/admin.py:50
+#: planfood/common/admin.py:54 planfood/dishes/admin.py:68
 msgid "Number of Products Norms"
 msgstr "Кількість норм"
 
-#: planfood/common/admin.py:43 planfood/dishes/admin.py:52
+#: planfood/common/admin.py:55 planfood/dishes/admin.py:70
 msgid "Number of Products"
 msgstr "Кількість продуктів"
+
+#: planfood/common/admin.py:57
+msgid "Creates norms for selected category of products"
+msgstr "Створити норми для вибраних категорій продуктів"
 
 #: planfood/common/apps.py:7
 msgid "Common"
@@ -100,15 +104,15 @@ msgstr "Категорії продуктів"
 msgid "Product category"
 msgstr "Категорія продукту"
 
-#: planfood/dishes/admin.py:51
+#: planfood/dishes/admin.py:69
 msgid "Number of Products Outputs"
 msgstr "Кількість вихід-значень"
 
-#: planfood/dishes/admin.py:53
+#: planfood/dishes/admin.py:72
 msgid "Creates norms for selected dishes"
 msgstr "Створити норми для вибраних страв"
 
-#: planfood/dishes/admin.py:54
+#: planfood/dishes/admin.py:75
 msgid "Creates outputs for selected dishes"
 msgstr "Створити вихід-значення для вибраних страв"
 
