@@ -77,8 +77,8 @@ class Norm(TimeStampedModel):
     value = models.DecimalField(
         verbose_name=_('Value'),
         max_digits=10,
-        decimal_places=4,
-        default=Decimal('0.0000'),
+        decimal_places=5,
+        default=Decimal('0.00000'),
     )
 
     class Meta:
