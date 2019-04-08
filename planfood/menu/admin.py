@@ -15,7 +15,7 @@ class DishItemInline(admin.TabularInline):
 
 class NumberOfPersonsInline(admin.TabularInline):
     model = NumberOfPersons
-    fields = ('group', 'age_category', 'value')
+    fields = ('group', 'age_category', 'value', 'value_2')
     min_num = 5
     extra = 0
 

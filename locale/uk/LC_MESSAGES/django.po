@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-03 22:23+0300\n"
+"POT-Creation-Date: 2019-04-08 19:38+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -125,7 +125,7 @@ msgstr "Картотека страв"
 msgid "Products"
 msgstr "Продукти"
 
-#: planfood/dishes/models.py:30 planfood/menu/models.py:77
+#: planfood/dishes/models.py:30 planfood/menu/models.py:88
 msgid "Dishes"
 msgstr "Страви"
 
@@ -135,7 +135,7 @@ msgid "Dish"
 msgstr "Страва"
 
 #: planfood/dishes/models.py:63 planfood/dishes/models.py:103
-#: planfood/menu/models.py:50 planfood/products/models.py:78
+#: planfood/menu/models.py:51 planfood/products/models.py:78
 msgid "Value"
 msgstr "Значення"
 
@@ -184,47 +184,59 @@ msgid "Menu days"
 msgstr "Меню-дні"
 
 #: planfood/menu/models.py:21 planfood/menu/models.py:46
-#: planfood/menu/models.py:70
+#: planfood/menu/models.py:81
 msgid "Menu day"
 msgstr "Меню-день"
 
-#: planfood/menu/models.py:53
+#: planfood/menu/models.py:54
+msgid "A total number of persons / A number of persons as day stay"
+msgstr "Всього осіб / Кількість осіб денного перебування"
+
+#: planfood/menu/models.py:57
+msgid "Value 2"
+msgstr "Значення 2"
+
+#: planfood/menu/models.py:60
+msgid "A number of persons as outpatient"
+msgstr "Кількість осіб амбулаторного перебування"
+
+#: planfood/menu/models.py:64
 msgid "Numbers of persons"
 msgstr "Кількість осіб"
 
-#: planfood/menu/models.py:54
+#: planfood/menu/models.py:65
 msgid "Number of persons"
 msgstr "Кількість осіб"
 
-#: planfood/menu/models.py:62
+#: planfood/menu/models.py:73
 msgid "Breakfast"
 msgstr "Сніданок"
 
-#: planfood/menu/models.py:63
+#: planfood/menu/models.py:74
 msgid "Lunch"
 msgstr "Обід"
 
-#: planfood/menu/models.py:64
+#: planfood/menu/models.py:75
 msgid "Afternoon Snack"
 msgstr "Полуденок"
 
-#: planfood/menu/models.py:65
+#: planfood/menu/models.py:76
 msgid "Dinner"
 msgstr "Вечеря"
 
-#: planfood/menu/models.py:66
+#: planfood/menu/models.py:77
 msgid "Tea"
 msgstr "Підвечірок"
 
-#: planfood/menu/models.py:80
+#: planfood/menu/models.py:91
 msgid "Period"
 msgstr "Період"
 
-#: planfood/menu/models.py:83
+#: planfood/menu/models.py:94
 msgid "Set of dishes"
 msgstr "Набір страв"
 
-#: planfood/menu/models.py:84
+#: planfood/menu/models.py:95
 msgid "Dish item"
 msgstr "Позиція страви"
 
