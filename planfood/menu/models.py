@@ -17,6 +17,7 @@ class MenuDay(StatusModel, TimeStampedModel):
     status = StatusField(verbose_name=_('Status'))
 
     class Meta:
+        ordering = ['-date']
         verbose_name_plural = _('Menu days')
         verbose_name = _('Menu day')
 

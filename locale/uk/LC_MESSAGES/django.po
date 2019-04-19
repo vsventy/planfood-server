@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-08 19:38+0300\n"
+"POT-Creation-Date: 2019-04-19 12:01+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,8 +82,8 @@ msgid "Groups"
 msgstr "Групи"
 
 #: planfood/common/models.py:34 planfood/dishes/models.py:48
-#: planfood/dishes/models.py:95 planfood/menu/models.py:38
-#: planfood/products/models.py:70
+#: planfood/dishes/models.py:95 planfood/menu/admin.py:89
+#: planfood/menu/models.py:38 planfood/products/models.py:70
 msgid "Group"
 msgstr "Група"
 
@@ -158,6 +158,10 @@ msgstr "Норми"
 #: planfood/dishes/models.py:111 planfood/products/models.py:86
 msgid "Norm"
 msgstr "Норма"
+
+#: planfood/menu/admin.py:90
+msgid "Count of Dishes by period"
+msgstr "Кількість страв за періодами"
 
 #: planfood/menu/apps.py:7
 msgid "Menu"
