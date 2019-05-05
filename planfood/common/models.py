@@ -72,7 +72,8 @@ class DefaultSettings(TimeStampedModel):
     storekeeper_initials = models.CharField(verbose_name=_('Storekeeper initials'), max_length=255)
 
     class Meta:
+        verbose_name_plural = _('Default Settings')
         verbose_name = _('Default Settings')
 
     def __str__(self):
-        return '%s %s %s' % (self.director_initials, self.nurse_initials, self.senior_nurse_initials)
+        return '%s, %s, %s' % (self.director_initials, self.nurse_initials, self.senior_nurse_initials)

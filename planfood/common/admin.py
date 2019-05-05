@@ -3,11 +3,16 @@ from django.utils.translation import ugettext_lazy as _
 
 from planfood.products.models import Norm
 
-from .models import AgeCategory, DishType, Group, ProductCategory
+from .models import AgeCategory, DefaultSettings, DishType, Group, ProductCategory
 
 
 @admin.register(AgeCategory)
 class AgeCategoryAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(DefaultSettings)
+class DefaultSettingsAdmin(admin.ModelAdmin):
     pass
 
 
