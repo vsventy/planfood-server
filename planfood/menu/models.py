@@ -19,6 +19,7 @@ class MenuDay(StatusModel, TimeStampedModel):
     settings = JSONField(blank=True, null=True, verbose_name=_('Settings'))
 
     class Meta:
+        ordering = ['-date']
         verbose_name_plural = _('Menu days')
         verbose_name = _('Menu day')
 
@@ -49,7 +50,18 @@ class NumberOfPersons(TimeStampedModel):
         related_name='numbers_of_persons',
         on_delete=models.CASCADE,
     )
-    value = models.IntegerField(verbose_name=_('Value'), blank=True, default=0)
+    value = models.IntegerField(
+        verbose_name=_('Value'),
+        blank=True,
+        default=0,
+        help_text=_('A total number of persons / A number of persons as day stay'),
+    )
+    value_2 = models.IntegerField(
+        verbose_name=_('Value 2'),
+        blank=True,
+        default=0,
+        help_text=_('A number of persons as outpatient'),
+    )
 
     class Meta:
         verbose_name_plural = _('Numbers of persons')
