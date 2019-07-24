@@ -2,16 +2,18 @@ from datetime import datetime
 
 from django.contrib import admin, messages
 from django.core.exceptions import ValidationError
+from django.core.serializers import serialize
 from django.db.models import Count
 from django.http import HttpResponseRedirect
-from django.urls import path
-from django.utils.html import escape
+from django.urls import path, reverse
+from django.utils.html import escape, format_html
 from django.utils.translation import ugettext_lazy as _
 
-from planfood.common.models import Group
+from planfood.common.models import DefaultSettings, Group
 from planfood.menu.models import DishItem
 
 from .models import MenuDay, NumberOfPersons
+from .views import create_menu_report_xlsx
 
 
 class DishItemInline(admin.TabularInline):
@@ -27,14 +29,29 @@ class NumberOfPersonsInline(admin.TabularInline):
 
 @admin.register(MenuDay)
 class MenuDayAdmin(admin.ModelAdmin):
-    list_display = ('date', 'group_name', 'dishes_count', 'status')
+    list_display = ('date', 'group_name', 'dishes_count', 'status', 'menuday_actions')
+    fields = ('date', 'status', 'status_changed')
     readonly_fields = ('status_changed',)
     change_list_template = "admin/menu_change_list.html"
     inlines = [NumberOfPersonsInline, DishItemInline]
 
+    def menuday_actions(self, obj):
+        return format_html(
+            '<a class="button" href="{}">{}</a>',
+            reverse('admin:menu_report', args=[obj.pk]),
+            _('Menu/Demand'),
+        )
+
     def get_urls(self):
         urls = super(MenuDayAdmin, self).get_urls()
-        my_urls = [path('create/', self.create_menu_day, name='menuday')]
+        my_urls = [
+            path('create/', self.create_menu_day, name='menuday'),
+            path(
+                '<int:menuday_id>/report/',
+                view=create_menu_report_xlsx,
+                name='menu_report',
+            ),
+        ]
         return my_urls + urls
 
     def changelist_view(self, request, extra_context=None):
@@ -64,7 +81,10 @@ class MenuDayAdmin(admin.ModelAdmin):
                 try:
                     id_group = int(answer)
                     group = Group.objects.get(pk=id_group)
-                    menu_day = MenuDay.objects.create(date=datetime.strptime(date, '%d.%m.%Y'))
+                    menu_day = MenuDay.objects.create(
+                        date=datetime.strptime(date, '%d.%m.%Y'),
+                        settings=serialize('json', DefaultSettings.objects.all()),
+                    )
                     for age_category in group.age_categories.iterator():
                         NumberOfPersons.objects.create(
                             age_category=age_category, group=group, menu_day=menu_day
@@ -90,3 +110,4 @@ class MenuDayAdmin(admin.ModelAdmin):
 
     group_name.short_description = _('Group')  # type: ignore
     dishes_count.short_description = _('Count of Dishes by period')  # type: ignore
+    menuday_actions.short_description = _('Actions')  # type: ignore

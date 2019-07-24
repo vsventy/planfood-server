@@ -1,3 +1,4 @@
+openpyxl==2.6.2  # https://bitbucket.org/openpyxl/openpyxl
 pytz==2018.5  # https://github.com/stub42/pytz
 python-slugify==1.2.6  # https://github.com/un33k/python-slugify
 Pillow==5.2.0  # https://github.com/python-pillow/Pillow

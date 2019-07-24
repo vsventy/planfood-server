@@ -1,1 +1,6 @@
 {% extends "base.html" %}
+
+{% block content %}
+  <p>Test Home Page</p>
+  <a class="btn btn-primary" href="{% url 'menu:report' %}" role="button">Download Menu</a>
+{% endblock content %}
