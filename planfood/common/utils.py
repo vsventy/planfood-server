@@ -1,8 +1,11 @@
 from copy import copy
+import logging
 
 from django.http import HttpResponse
 
 from openpyxl.styles import Border, Side
+
+logger = logging.getLogger(__name__)
 
 
 def set_cells_border(worksheet, row, start_column, end_column, border=None):
@@ -36,7 +39,7 @@ def clone_cell_style(source, target):
         target.alignment = copy(source.alignment)
 
 
-def render_worksheet(worksheet, d, min_row=1, max_column=20, max_row=100):
+def render_worksheet(worksheet, d, min_row=1, max_column=20, max_row=200):
     for row in worksheet.iter_rows(
         min_row=min_row, max_col=max_column, max_row=max_row
     ):
@@ -46,6 +49,7 @@ def render_worksheet(worksheet, d, min_row=1, max_column=20, max_row=100):
 
 
 def make_spreadsheat_reponse(workbook, filename):
+    logger.debug('{}'.format(filename))
     response = HttpResponse(
         content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     )
