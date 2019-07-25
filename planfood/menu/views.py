@@ -103,7 +103,8 @@ def create_menu_report_xlsx(request, menuday_id=None):
     format_menu_worksheet(workbook, menu_day, group_name, menu_template_cells)
     format_demand_worksheet(workbook, number_of_products, demand_template_cells)
 
-    filename = '{date}-menu-{group}'.format(
+    group_name = group_name.replace(' ', '').replace(',', '_')
+    filename = '{date}_{group}'.format(
         date=menu_day.date.strftime('%Y-%m-%d'), group=escape_uri_path(group_name)
     )
     return make_spreadsheat_reponse(workbook, filename)
@@ -149,9 +150,9 @@ def fill_workbook(workbook, settings, menu_day, group_name, menu_cells, demand_c
     d['storekeeper_initials'] = settings.storekeeper_initials
 
     # numbers of persons by age categories
-    total_numbers = menu_day.numbers_of_persons.values_list(
-        'age_category__name', 'value'
-    )
+    total_numbers = menu_day.numbers_of_persons.order_by(
+        'age_category__sort'
+    ).values_list('age_category__name', 'value')
     total_cell = menu_cells['total_age_category']
     index = 0
     for item in total_numbers:
@@ -311,9 +312,10 @@ def fill_workbook(workbook, settings, menu_day, group_name, menu_cells, demand_c
             menu_worksheet.insert_rows(menu_row.row + index)
 
     # fill demand worksheet
+    sorted_products_dict = dict(sorted(products_dict.items()))
     demand_row = demand_cells['demand_row']
     n = 0
-    for item_number, product in products_dict.items():
+    for item_number, product in sorted_products_dict.items():
         demand_worksheet.cell(
             row=demand_row.row + n, column=demand_row.column, value=str(n + 1)
         )
