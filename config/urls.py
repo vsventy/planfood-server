@@ -19,6 +19,7 @@ urlpatterns = [
     path(
         "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     ),
+    path("menu/", include("planfood.menu.urls", namespace="menu")),
     # User management
     path("users/", include("planfood.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),

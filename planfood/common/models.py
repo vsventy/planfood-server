@@ -63,3 +63,32 @@ class ProductCategory(TimeStampedModel):
 
     def __str__(self):
         return self.name
+
+
+class DefaultSettings(TimeStampedModel):
+    uuid = models.UUIDField(db_index=True, default=uuid_lib.uuid4, editable=False)
+    director_initials = models.CharField(
+        verbose_name=_('Director initials'), max_length=255
+    )
+    nurse_post = models.CharField(verbose_name=_('Nurse post'), max_length=255)
+    nurse_initials = models.CharField(verbose_name=_('Nurse initials'), max_length=255)
+    senior_nurse_post = models.CharField(
+        verbose_name=_('Senior nurse post'), max_length=255
+    )
+    senior_nurse_initials = models.CharField(
+        verbose_name=_('Senior nurse initials'), max_length=255
+    )
+    storekeeper_initials = models.CharField(
+        verbose_name=_('Storekeeper initials'), max_length=255
+    )
+
+    class Meta:
+        verbose_name_plural = _('Default Settings')
+        verbose_name = _('Default Settings')
+
+    def __str__(self):
+        return '%s, %s, %s' % (
+            self.director_initials,
+            self.nurse_initials,
+            self.senior_nurse_initials,
+        )

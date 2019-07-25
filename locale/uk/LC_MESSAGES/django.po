@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-19 12:01+0300\n"
+"POT-Creation-Date: 2019-07-24 22:21+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,15 +36,15 @@ msgstr "Облік харчування"
 msgid "Site administration"
 msgstr "Адміністрування сайту"
 
-#: planfood/common/admin.py:54 planfood/dishes/admin.py:68
+#: planfood/common/admin.py:64 planfood/dishes/admin.py:68
 msgid "Number of Products Norms"
 msgstr "Кількість норм"
 
-#: planfood/common/admin.py:55 planfood/dishes/admin.py:70
+#: planfood/common/admin.py:65 planfood/dishes/admin.py:70
 msgid "Number of Products"
 msgstr "Кількість продуктів"
 
-#: planfood/common/admin.py:57
+#: planfood/common/admin.py:67
 msgid "Creates norms for selected category of products"
 msgstr "Створити норми для вибраних категорій продуктів"
 
@@ -67,8 +67,8 @@ msgstr "Назва"
 msgid "Age categories"
 msgstr "Вікові категорії"
 
-#: planfood/common/models.py:17 planfood/dishes/models.py:40
-#: planfood/dishes/models.py:87 planfood/menu/models.py:30
+#: planfood/common/models.py:17 planfood/dishes/models.py:44
+#: planfood/dishes/models.py:91 planfood/menu/models.py:33
 #: planfood/products/models.py:62
 msgid "Age category"
 msgstr "Вікова категорія"
@@ -81,9 +81,9 @@ msgstr "Вікові категорії"
 msgid "Groups"
 msgstr "Групи"
 
-#: planfood/common/models.py:34 planfood/dishes/models.py:48
-#: planfood/dishes/models.py:95 planfood/menu/admin.py:89
-#: planfood/menu/models.py:38 planfood/products/models.py:70
+#: planfood/common/models.py:34 planfood/dishes/models.py:52
+#: planfood/dishes/models.py:99 planfood/menu/admin.py:111
+#: planfood/menu/models.py:41 planfood/products/models.py:70
 msgid "Group"
 msgstr "Група"
 
@@ -103,6 +103,34 @@ msgstr "Категорії продуктів"
 #: planfood/products/models.py:54
 msgid "Product category"
 msgstr "Категорія продукту"
+
+#: planfood/common/models.py:71
+msgid "Director initials"
+msgstr "Директор (П. І. П.)"
+
+#: planfood/common/models.py:73
+msgid "Nurse post"
+msgstr "Дієтсестра (посада)"
+
+#: planfood/common/models.py:74
+msgid "Nurse initials"
+msgstr "Дієтсестра (П. І. П.)"
+
+#: planfood/common/models.py:76
+msgid "Senior nurse post"
+msgstr "Ст. медсестра (посада)"
+
+#: planfood/common/models.py:79
+msgid "Senior nurse initials"
+msgstr "Ст. медсестра (П. І. П.)"
+
+#: planfood/common/models.py:82
+msgid "Storekeeper initials"
+msgstr "Комірник (П. І. П.)"
+
+#: planfood/common/models.py:86 planfood/common/models.py:87
+msgid "Default Settings"
+msgstr "Базові налаштування"
 
 #: planfood/dishes/admin.py:69
 msgid "Number of Products Outputs"
@@ -125,124 +153,144 @@ msgstr "Картотека страв"
 msgid "Products"
 msgstr "Продукти"
 
-#: planfood/dishes/models.py:30 planfood/menu/models.py:88
+#: planfood/dishes/models.py:30 planfood/menu/models.py:91
 msgid "Dishes"
 msgstr "Страви"
 
-#: planfood/dishes/models.py:31 planfood/dishes/models.py:56
-#: planfood/dishes/models.py:75
+#: planfood/dishes/models.py:31 planfood/dishes/models.py:60
+#: planfood/dishes/models.py:79
 msgid "Dish"
 msgstr "Страва"
 
-#: planfood/dishes/models.py:63 planfood/dishes/models.py:103
-#: planfood/menu/models.py:51 planfood/products/models.py:78
+#: planfood/dishes/models.py:67 planfood/dishes/models.py:107
+#: planfood/menu/models.py:54 planfood/products/models.py:78
 msgid "Value"
 msgstr "Значення"
 
-#: planfood/dishes/models.py:66
+#: planfood/dishes/models.py:70
 msgid "Output values"
 msgstr "Вихід-значення"
 
-#: planfood/dishes/models.py:67
+#: planfood/dishes/models.py:71
 msgid "Output value"
 msgstr "Вихід-значення"
 
-#: planfood/dishes/models.py:79 planfood/products/models.py:45
+#: planfood/dishes/models.py:83 planfood/products/models.py:45
 msgid "Product"
 msgstr "Продукт"
 
-#: planfood/dishes/models.py:110 planfood/products/models.py:85
+#: planfood/dishes/models.py:114 planfood/products/models.py:85
 msgid "Norms"
 msgstr "Норми"
 
-#: planfood/dishes/models.py:111 planfood/products/models.py:86
+#: planfood/dishes/models.py:115 planfood/products/models.py:86
 msgid "Norm"
 msgstr "Норма"
 
-#: planfood/menu/admin.py:90
+#: planfood/menu/admin.py:42
+msgid "Menu/Demand"
+msgstr "Меню/Вимога"
+
+#: planfood/menu/admin.py:112
 msgid "Count of Dishes by period"
 msgstr "Кількість страв за періодами"
+
+#: planfood/menu/admin.py:113
+msgid "Actions"
+msgstr "Дії"
 
 #: planfood/menu/apps.py:7
 msgid "Menu"
 msgstr "Меню"
 
-#: planfood/menu/models.py:14
+#: planfood/menu/models.py:15
 msgid "draft"
 msgstr "чернетка"
 
-#: planfood/menu/models.py:14
+#: planfood/menu/models.py:15
 msgid "published"
 msgstr "опубліковано"
 
-#: planfood/menu/models.py:16
+#: planfood/menu/models.py:17
 msgid "Date"
 msgstr "Дата"
 
-#: planfood/menu/models.py:17
+#: planfood/menu/models.py:18
 msgid "Status"
 msgstr "Статус"
 
-#: planfood/menu/models.py:20
+#: planfood/menu/models.py:19
+msgid "Settings"
+msgstr ""
+
+#: planfood/menu/models.py:23
 msgid "Menu days"
 msgstr "Меню-дні"
 
-#: planfood/menu/models.py:21 planfood/menu/models.py:46
-#: planfood/menu/models.py:81
+#: planfood/menu/models.py:24 planfood/menu/models.py:49
+#: planfood/menu/models.py:84
 msgid "Menu day"
 msgstr "Меню-день"
 
-#: planfood/menu/models.py:54
+#: planfood/menu/models.py:57
 msgid "A total number of persons / A number of persons as day stay"
 msgstr "Всього осіб / Кількість осіб денного перебування"
 
-#: planfood/menu/models.py:57
+#: planfood/menu/models.py:60
 msgid "Value 2"
 msgstr "Значення 2"
 
-#: planfood/menu/models.py:60
+#: planfood/menu/models.py:63
 msgid "A number of persons as outpatient"
 msgstr "Кількість осіб амбулаторного перебування"
 
-#: planfood/menu/models.py:64
+#: planfood/menu/models.py:67
 msgid "Numbers of persons"
 msgstr "Кількість осіб"
 
-#: planfood/menu/models.py:65
+#: planfood/menu/models.py:68
 msgid "Number of persons"
 msgstr "Кількість осіб"
 
-#: planfood/menu/models.py:73
+#: planfood/menu/models.py:76
 msgid "Breakfast"
 msgstr "Сніданок"
 
-#: planfood/menu/models.py:74
+#: planfood/menu/models.py:77
 msgid "Lunch"
 msgstr "Обід"
 
-#: planfood/menu/models.py:75
+#: planfood/menu/models.py:78
 msgid "Afternoon Snack"
 msgstr "Полуденок"
 
-#: planfood/menu/models.py:76
+#: planfood/menu/models.py:79
 msgid "Dinner"
 msgstr "Вечеря"
 
-#: planfood/menu/models.py:77
+#: planfood/menu/models.py:80
 msgid "Tea"
 msgstr "Підвечірок"
 
-#: planfood/menu/models.py:91
+#: planfood/menu/models.py:94
 msgid "Period"
 msgstr "Період"
 
-#: planfood/menu/models.py:94
+#: planfood/menu/models.py:97
 msgid "Set of dishes"
 msgstr "Набір страв"
 
-#: planfood/menu/models.py:95
+#: planfood/menu/models.py:98
 msgid "Dish item"
 msgstr "Позиція страви"
+
+#: planfood/menu/views.py:73
+msgid "No menu day selected."
+msgstr ""
+
+#: planfood/menu/views.py:81
+msgid "No default settings. Please set them in the admin panel and try again."
+msgstr ""
 
 #: planfood/products/models.py:15
 msgid "Kg"
@@ -550,6 +598,9 @@ msgstr "Ім'я користувача"
 #: planfood/users/models.py:12
 msgid "Can show logged users"
 msgstr "Може переглядати залогінених користувачів"
+
+#~ msgid "Download Report"
+#~ msgstr "Завантажити Звіт"
 
 #~ msgid "About"
 #~ msgstr "Про сайт"

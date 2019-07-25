@@ -1,5 +1,6 @@
 import uuid as uuid_lib
 
+from django.contrib.postgres.fields import JSONField
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -15,6 +16,7 @@ class MenuDay(StatusModel, TimeStampedModel):
     uuid = models.UUIDField(db_index=True, default=uuid_lib.uuid4, editable=False)
     date = models.DateField(verbose_name=_('Date'))
     status = StatusField(verbose_name=_('Status'))
+    settings = JSONField(blank=True, null=True, verbose_name=_('Settings'))
 
     class Meta:
         ordering = ['-date']

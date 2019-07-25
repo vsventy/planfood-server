@@ -33,6 +33,10 @@ class Dish(TimeStampedModel):
     def __str__(self):
         return self.name
 
+    @property
+    def is_atomic(self):
+        return self.products.count() == 1
+
 
 class Output(TimeStampedModel):
     age_category = models.ForeignKey(

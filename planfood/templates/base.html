@@ -1,4 +1,6 @@
-{% load static i18n %}<!DOCTYPE html>
+{% load static i18n %}
+{% load common_tags %}
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -31,6 +33,7 @@
 
     <link href="{% static 'css/project.css' %}" rel="stylesheet">
     <link href="{% static 'css/site.css' %}" rel="stylesheet">
+    <link href="{% static 'css/sticky-footer.css' %}" rel="stylesheet">
 
 
     {% endblock %}
@@ -73,7 +76,20 @@
 
     </div>
 
-    <div class="container">
+    <footer class="footer">
+      <div class="container d-flex">
+        <div class="text-truncate">
+          <small class="text-muted">
+            &copy; Вараський міський центр комплексної реабілітації для осіб з інвалідністю імені З. А. Матвієнко, 2018-{% now "Y" %}
+          </small>
+        </div>
+        <div class="ml-auto">
+          <small class="text-muted">вер.{% version_number %} від {% version_date %} р.</small>
+        </div>
+      </div>
+    </footer>
+
+    <div class="container pt-3">
 
       {% if messages %}
           {% for message in messages %}
