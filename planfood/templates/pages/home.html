@@ -1,6 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <p>Test Home Page</p>
-  <a class="btn btn-primary" href="{% url 'menu:report' %}" role="button">Download Menu</a>
+  <div class="container d-flex justify-content-start">
+    <div class="card m-2" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Підказка № 1</h5>
+        <h6 class="card-subtitle mb-2 text-muted">25.07.19</h6>
+        <p class="card-text">Для створення нового меню-дня перейдіть в розділ Адміністрування / Меню-дні.</p>
+        <a href="{% url 'admin:menuday' %}" class="card-link">Перейти</a>
+      </div>
+    </div>
+    <div class="card m-2" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Підказка № 2</h5>
+        <h6 class="card-subtitle mb-2 text-muted">25.07.19</h6>
+        <p class="card-text">Для друку звіту натисніть на кнопку "Меню / Вимога" у списку меню-днів.</p>
+        <a href="{% url 'admin:menuday' %}" class="card-link">Перейти</a>
+      </div>
+    </div>
+  </div>
 {% endblock content %}
