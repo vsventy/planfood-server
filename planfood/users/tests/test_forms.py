@@ -3,11 +3,11 @@ import pytest
 from planfood.users.forms import UserCreationForm
 from planfood.users.tests.factories import UserFactory
 
+
 pytestmark = pytest.mark.django_db
 
 
 class TestUserCreationForm:
-
     def test_clean_username(self):
         # A user with proto_user params does not exist yet.
         proto_user = UserFactory.build()

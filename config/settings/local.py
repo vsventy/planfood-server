@@ -1,3 +1,6 @@
+import os
+
+os.environ["DJANGO_READ_DOT_ENV_FILE"] = 'true'
 from .base import *  # noqa
 from .base import env
 
@@ -6,13 +9,12 @@ from .base import env
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug
 DEBUG = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
-SECRET_KEY = env('DJANGO_SECRET_KEY', default='B85SA8Jxa0pjwVXRF1o2ParDdu95E71NeQ8hWE7PTA7jeLp63km31YMEG9ohrWNj')
+SECRET_KEY = env(
+    'DJANGO_SECRET_KEY',
+    default='B85SA8Jxa0pjwVXRF1o2ParDdu95E71NeQ8hWE7PTA7jeLp63km31YMEG9ohrWNj',
+)
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = [
-    "localhost",
-    "0.0.0.0",
-    "127.0.0.1",
-]
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
 
 # CACHES
 # ------------------------------------------------------------------------------
@@ -20,7 +22,7 @@ ALLOWED_HOSTS = [
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-        'LOCATION': ''
+        'LOCATION': '',
     }
 }
 
@@ -44,9 +46,7 @@ INSTALLED_APPS += ['debug_toolbar']  # noqa F405
 MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']  # noqa F405
 # https://django-debug-toolbar.readthedocs.io/en/latest/configuration.html#debug-toolbar-config
 DEBUG_TOOLBAR_CONFIG = {
-    'DISABLE_PANELS': [
-        'debug_toolbar.panels.redirects.RedirectsPanel',
-    ],
+    'DISABLE_PANELS': ['debug_toolbar.panels.redirects.RedirectsPanel'],
     'SHOW_TEMPLATE_CONTEXT': True,
 }
 # https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#internal-ips
@@ -65,3 +65,27 @@ CELERY_TASK_ALWAYS_EAGER = True
 CELERY_TASK_EAGER_PROPAGATES = True
 # Your stuff...
 # ------------------------------------------------------------------------------
+
+# Logging settings
+# ------------------------------------------------------------------------------
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'INFO'
+        },
+        'planfood': {
+            'handlers': ['console'],
+            'propagate': False,
+            'level': 'DEBUG',
+        },
+    },
+}

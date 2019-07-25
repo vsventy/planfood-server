@@ -1,0 +1,609 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-24 22:21+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: config/settings/base.py:33
+msgid "Ukrainian"
+msgstr "Українська"
+
+#: config/settings/base.py:33
+msgid "English"
+msgstr "Англійська"
+
+#: config/urls.py:13 config/urls.py:14 planfood/templates/base.html:6
+#: planfood/templates/base.html:48
+msgid "Plan Food"
+msgstr "Облік харчування"
+
+#: config/urls.py:15
+msgid "Site administration"
+msgstr "Адміністрування сайту"
+
+#: planfood/common/admin.py:64 planfood/dishes/admin.py:68
+msgid "Number of Products Norms"
+msgstr "Кількість норм"
+
+#: planfood/common/admin.py:65 planfood/dishes/admin.py:70
+msgid "Number of Products"
+msgstr "Кількість продуктів"
+
+#: planfood/common/admin.py:67
+msgid "Creates norms for selected category of products"
+msgstr "Створити норми для вибраних категорій продуктів"
+
+#: planfood/common/apps.py:7
+msgid "Common"
+msgstr "Загальне"
+
+#: planfood/common/models.py:11 planfood/common/models.py:28
+#: planfood/common/models.py:42 planfood/common/models.py:56
+msgid "Sort"
+msgstr "Сортування"
+
+#: planfood/common/models.py:12 planfood/common/models.py:29
+#: planfood/common/models.py:43 planfood/common/models.py:57
+#: planfood/dishes/models.py:26 planfood/products/models.py:33
+msgid "Name"
+msgstr "Назва"
+
+#: planfood/common/models.py:16
+msgid "Age categories"
+msgstr "Вікові категорії"
+
+#: planfood/common/models.py:17 planfood/dishes/models.py:44
+#: planfood/dishes/models.py:91 planfood/menu/models.py:33
+#: planfood/products/models.py:62
+msgid "Age category"
+msgstr "Вікова категорія"
+
+#: planfood/common/models.py:25
+msgid "Age Categories"
+msgstr "Вікові категорії"
+
+#: planfood/common/models.py:33
+msgid "Groups"
+msgstr "Групи"
+
+#: planfood/common/models.py:34 planfood/dishes/models.py:52
+#: planfood/dishes/models.py:99 planfood/menu/admin.py:111
+#: planfood/menu/models.py:41 planfood/products/models.py:70
+msgid "Group"
+msgstr "Група"
+
+#: planfood/common/models.py:47
+msgid "Dish types"
+msgstr "Типи страв"
+
+#: planfood/common/models.py:48 planfood/dishes/models.py:19
+msgid "Dish type"
+msgstr "Тип страви"
+
+#: planfood/common/models.py:61
+msgid "Product categories"
+msgstr "Категорії продуктів"
+
+#: planfood/common/models.py:62 planfood/products/models.py:23
+#: planfood/products/models.py:54
+msgid "Product category"
+msgstr "Категорія продукту"
+
+#: planfood/common/models.py:71
+msgid "Director initials"
+msgstr "Директор (П. І. П.)"
+
+#: planfood/common/models.py:73
+msgid "Nurse post"
+msgstr "Дієтсестра (посада)"
+
+#: planfood/common/models.py:74
+msgid "Nurse initials"
+msgstr "Дієтсестра (П. І. П.)"
+
+#: planfood/common/models.py:76
+msgid "Senior nurse post"
+msgstr "Ст. медсестра (посада)"
+
+#: planfood/common/models.py:79
+msgid "Senior nurse initials"
+msgstr "Ст. медсестра (П. І. П.)"
+
+#: planfood/common/models.py:82
+msgid "Storekeeper initials"
+msgstr "Комірник (П. І. П.)"
+
+#: planfood/common/models.py:86 planfood/common/models.py:87
+msgid "Default Settings"
+msgstr "Базові налаштування"
+
+#: planfood/dishes/admin.py:69
+msgid "Number of Products Outputs"
+msgstr "Кількість вихід-значень"
+
+#: planfood/dishes/admin.py:72
+msgid "Creates norms for selected dishes"
+msgstr "Створити норми для вибраних страв"
+
+#: planfood/dishes/admin.py:75
+msgid "Creates outputs for selected dishes"
+msgstr "Створити вихід-значення для вибраних страв"
+
+#: planfood/dishes/apps.py:7
+msgid "Card of dishes"
+msgstr "Картотека страв"
+
+#: planfood/dishes/models.py:15 planfood/products/apps.py:7
+#: planfood/products/models.py:44
+msgid "Products"
+msgstr "Продукти"
+
+#: planfood/dishes/models.py:30 planfood/menu/models.py:91
+msgid "Dishes"
+msgstr "Страви"
+
+#: planfood/dishes/models.py:31 planfood/dishes/models.py:60
+#: planfood/dishes/models.py:79
+msgid "Dish"
+msgstr "Страва"
+
+#: planfood/dishes/models.py:67 planfood/dishes/models.py:107
+#: planfood/menu/models.py:54 planfood/products/models.py:78
+msgid "Value"
+msgstr "Значення"
+
+#: planfood/dishes/models.py:70
+msgid "Output values"
+msgstr "Вихід-значення"
+
+#: planfood/dishes/models.py:71
+msgid "Output value"
+msgstr "Вихід-значення"
+
+#: planfood/dishes/models.py:83 planfood/products/models.py:45
+msgid "Product"
+msgstr "Продукт"
+
+#: planfood/dishes/models.py:114 planfood/products/models.py:85
+msgid "Norms"
+msgstr "Норми"
+
+#: planfood/dishes/models.py:115 planfood/products/models.py:86
+msgid "Norm"
+msgstr "Норма"
+
+#: planfood/menu/admin.py:42
+msgid "Menu/Demand"
+msgstr "Меню/Вимога"
+
+#: planfood/menu/admin.py:112
+msgid "Count of Dishes by period"
+msgstr "Кількість страв за періодами"
+
+#: planfood/menu/admin.py:113
+msgid "Actions"
+msgstr "Дії"
+
+#: planfood/menu/apps.py:7
+msgid "Menu"
+msgstr "Меню"
+
+#: planfood/menu/models.py:15
+msgid "draft"
+msgstr "чернетка"
+
+#: planfood/menu/models.py:15
+msgid "published"
+msgstr "опубліковано"
+
+#: planfood/menu/models.py:17
+msgid "Date"
+msgstr "Дата"
+
+#: planfood/menu/models.py:18
+msgid "Status"
+msgstr "Статус"
+
+#: planfood/menu/models.py:19
+msgid "Settings"
+msgstr ""
+
+#: planfood/menu/models.py:23
+msgid "Menu days"
+msgstr "Меню-дні"
+
+#: planfood/menu/models.py:24 planfood/menu/models.py:49
+#: planfood/menu/models.py:84
+msgid "Menu day"
+msgstr "Меню-день"
+
+#: planfood/menu/models.py:57
+msgid "A total number of persons / A number of persons as day stay"
+msgstr "Всього осіб / Кількість осіб денного перебування"
+
+#: planfood/menu/models.py:60
+msgid "Value 2"
+msgstr "Значення 2"
+
+#: planfood/menu/models.py:63
+msgid "A number of persons as outpatient"
+msgstr "Кількість осіб амбулаторного перебування"
+
+#: planfood/menu/models.py:67
+msgid "Numbers of persons"
+msgstr "Кількість осіб"
+
+#: planfood/menu/models.py:68
+msgid "Number of persons"
+msgstr "Кількість осіб"
+
+#: planfood/menu/models.py:76
+msgid "Breakfast"
+msgstr "Сніданок"
+
+#: planfood/menu/models.py:77
+msgid "Lunch"
+msgstr "Обід"
+
+#: planfood/menu/models.py:78
+msgid "Afternoon Snack"
+msgstr "Полуденок"
+
+#: planfood/menu/models.py:79
+msgid "Dinner"
+msgstr "Вечеря"
+
+#: planfood/menu/models.py:80
+msgid "Tea"
+msgstr "Підвечірок"
+
+#: planfood/menu/models.py:94
+msgid "Period"
+msgstr "Період"
+
+#: planfood/menu/models.py:97
+msgid "Set of dishes"
+msgstr "Набір страв"
+
+#: planfood/menu/models.py:98
+msgid "Dish item"
+msgstr "Позиція страви"
+
+#: planfood/menu/views.py:73
+msgid "No menu day selected."
+msgstr ""
+
+#: planfood/menu/views.py:81
+msgid "No default settings. Please set them in the admin panel and try again."
+msgstr ""
+
+#: planfood/products/models.py:15
+msgid "Kg"
+msgstr "кг"
+
+#: planfood/products/models.py:16
+msgid "Pcs"
+msgstr "шт."
+
+#: planfood/products/models.py:17
+msgid "Jar"
+msgstr "б."
+
+#: planfood/products/models.py:18
+msgid "Liter"
+msgstr "л"
+
+#: planfood/products/models.py:31
+msgid "Item number"
+msgstr "№ (номенклатурний)"
+
+#: planfood/products/models.py:34
+msgid "Unit"
+msgstr "Одиниця"
+
+#: planfood/products/models.py:36
+msgid "Unit price"
+msgstr "Ціна за одиницю"
+
+#: planfood/templates/account/account_inactive.html:5
+#: planfood/templates/account/account_inactive.html:8
+msgid "Account Inactive"
+msgstr ""
+
+#: planfood/templates/account/account_inactive.html:10
+msgid "This account is inactive."
+msgstr ""
+
+#: planfood/templates/account/email.html:7
+msgid "Account"
+msgstr ""
+
+#: planfood/templates/account/email.html:10
+msgid "E-mail Addresses"
+msgstr ""
+
+#: planfood/templates/account/email.html:13
+msgid "The following e-mail addresses are associated with your account:"
+msgstr ""
+
+#: planfood/templates/account/email.html:27
+msgid "Verified"
+msgstr ""
+
+#: planfood/templates/account/email.html:29
+msgid "Unverified"
+msgstr ""
+
+#: planfood/templates/account/email.html:31
+msgid "Primary"
+msgstr ""
+
+#: planfood/templates/account/email.html:37
+msgid "Make Primary"
+msgstr ""
+
+#: planfood/templates/account/email.html:38
+msgid "Re-send Verification"
+msgstr ""
+
+#: planfood/templates/account/email.html:39
+msgid "Remove"
+msgstr ""
+
+#: planfood/templates/account/email.html:46
+msgid "Warning:"
+msgstr ""
+
+#: planfood/templates/account/email.html:46
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+
+#: planfood/templates/account/email.html:51
+msgid "Add E-mail Address"
+msgstr ""
+
+#: planfood/templates/account/email.html:56
+msgid "Add E-mail"
+msgstr ""
+
+#: planfood/templates/account/email.html:66
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr ""
+
+#: planfood/templates/account/email_confirm.html:6
+#: planfood/templates/account/email_confirm.html:10
+msgid "Confirm E-mail Address"
+msgstr ""
+
+#: planfood/templates/account/email_confirm.html:16
+#, python-format
+msgid ""
+"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
+"address for user %(user_display)s."
+msgstr ""
+
+#: planfood/templates/account/email_confirm.html:20
+msgid "Confirm"
+msgstr ""
+
+#: planfood/templates/account/email_confirm.html:27
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a href="
+"\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+
+#: planfood/templates/account/login.html:7
+#: planfood/templates/account/login.html:11
+#: planfood/templates/account/login.html:44 planfood/templates/base.html:67
+msgid "Sign In"
+msgstr ""
+
+#: planfood/templates/account/login.html:16
+#, python-format
+msgid ""
+"Please sign in with one\n"
+"of your existing third party accounts. Or, <a href=\"%(signup_url)s\">sign "
+"up</a>\n"
+"for a %(site_name)s account and sign in below:"
+msgstr ""
+
+#: planfood/templates/account/login.html:26
+msgid "or"
+msgstr ""
+
+#: planfood/templates/account/login.html:33
+#, python-format
+msgid ""
+"If you have not created an account yet, then please\n"
+"<a href=\"%(signup_url)s\">sign up</a> first."
+msgstr ""
+
+#: planfood/templates/account/login.html:43
+msgid "Forgot Password?"
+msgstr ""
+
+#: planfood/templates/account/logout.html:5
+#: planfood/templates/account/logout.html:8
+#: planfood/templates/account/logout.html:17 planfood/templates/base.html:62
+msgid "Sign Out"
+msgstr ""
+
+#: planfood/templates/account/logout.html:10
+msgid "Are you sure you want to sign out?"
+msgstr ""
+
+#: planfood/templates/account/password_change.html:6
+#: planfood/templates/account/password_change.html:9
+#: planfood/templates/account/password_change.html:14
+#: planfood/templates/account/password_reset_from_key.html:5
+#: planfood/templates/account/password_reset_from_key.html:8
+#: planfood/templates/account/password_reset_from_key_done.html:4
+#: planfood/templates/account/password_reset_from_key_done.html:7
+msgid "Change Password"
+msgstr ""
+
+#: planfood/templates/account/password_reset.html:7
+#: planfood/templates/account/password_reset.html:11
+#: planfood/templates/account/password_reset_done.html:6
+#: planfood/templates/account/password_reset_done.html:9
+msgid "Password Reset"
+msgstr ""
+
+#: planfood/templates/account/password_reset.html:16
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
+msgstr ""
+
+#: planfood/templates/account/password_reset.html:21
+msgid "Reset My Password"
+msgstr ""
+
+#: planfood/templates/account/password_reset.html:24
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr ""
+
+#: planfood/templates/account/password_reset_done.html:15
+msgid ""
+"We have sent you an e-mail. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: planfood/templates/account/password_reset_from_key.html:8
+msgid "Bad Token"
+msgstr ""
+
+#: planfood/templates/account/password_reset_from_key.html:12
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+
+#: planfood/templates/account/password_reset_from_key.html:18
+msgid "change password"
+msgstr ""
+
+#: planfood/templates/account/password_reset_from_key.html:21
+#: planfood/templates/account/password_reset_from_key_done.html:8
+msgid "Your password is now changed."
+msgstr ""
+
+#: planfood/templates/account/password_set.html:6
+#: planfood/templates/account/password_set.html:9
+#: planfood/templates/account/password_set.html:14
+msgid "Set Password"
+msgstr ""
+
+#: planfood/templates/account/signup.html:6
+msgid "Signup"
+msgstr ""
+
+#: planfood/templates/account/signup.html:9
+#: planfood/templates/account/signup.html:19
+msgid "Sign Up"
+msgstr ""
+
+#: planfood/templates/account/signup.html:11
+#, python-format
+msgid ""
+"Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
+msgstr ""
+
+#: planfood/templates/account/signup_closed.html:5
+#: planfood/templates/account/signup_closed.html:8
+msgid "Sign Up Closed"
+msgstr ""
+
+#: planfood/templates/account/signup_closed.html:10
+msgid "We are sorry, but the sign up is currently closed."
+msgstr ""
+
+#: planfood/templates/account/verification_sent.html:5
+#: planfood/templates/account/verification_sent.html:8
+#: planfood/templates/account/verified_email_required.html:5
+#: planfood/templates/account/verified_email_required.html:8
+msgid "Verify Your E-mail Address"
+msgstr ""
+
+#: planfood/templates/account/verification_sent.html:10
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: planfood/templates/account/verified_email_required.html:12
+msgid ""
+"This part of the site requires us to verify that\n"
+"you are who you claim to be. For this purpose, we require that you\n"
+"verify ownership of your e-mail address. "
+msgstr ""
+
+#: planfood/templates/account/verified_email_required.html:16
+msgid ""
+"We have sent an e-mail to you for\n"
+"verification. Please click on the link inside this e-mail. Please\n"
+"contact us if you do not receive it within a few minutes."
+msgstr ""
+
+#: planfood/templates/account/verified_email_required.html:20
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+
+#: planfood/templates/base.html:54
+msgid "Home"
+msgstr "Головна"
+
+#: planfood/templates/base.html:58
+#, fuzzy
+#| msgid "Site administration"
+msgid "Administration"
+msgstr "Адміністрування сайту"
+
+#: planfood/users/apps.py:8
+msgid "Users"
+msgstr "Користувачі"
+
+#: planfood/users/forms.py:17
+msgid "This username has already been taken."
+msgstr ""
+
+#: planfood/users/models.py:11
+msgid "Name of User"
+msgstr "Ім'я користувача"
+
+#: planfood/users/models.py:12
+msgid "Can show logged users"
+msgstr "Може переглядати залогінених користувачів"
+
+#~ msgid "Download Report"
+#~ msgstr "Завантажити Звіт"
+
+#~ msgid "About"
+#~ msgstr "Про сайт"
+
+#~ msgid "My Profile"
+#~ msgstr "Мій профіль"

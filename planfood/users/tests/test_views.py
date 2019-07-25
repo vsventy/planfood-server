@@ -1,8 +1,10 @@
-import pytest
 from django.conf import settings
 from django.test import RequestFactory
 
+import pytest
+
 from planfood.users.views import UserRedirectView, UserUpdateView
+
 
 pytestmark = pytest.mark.django_db
 
@@ -40,7 +42,6 @@ class TestUserUpdateView:
 
 
 class TestUserRedirectView:
-
     def test_get_redirect_url(
         self, user: settings.AUTH_USER_MODEL, request_factory: RequestFactory
     ):

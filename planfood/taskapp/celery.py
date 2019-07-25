@@ -1,13 +1,17 @@
 
 import os
-from celery import Celery
-from django.apps import apps, AppConfig
+
+from django.apps import AppConfig, apps
 from django.conf import settings
+
+from celery import Celery
 
 
 if not settings.configured:
     # set the default Django settings module for the 'celery' program.
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.local')  # pragma: no cover
+    os.environ.setdefault(
+        'DJANGO_SETTINGS_MODULE', 'config.settings.local'
+    )  # pragma: no cover
 
 
 app = Celery('planfood')
@@ -31,8 +35,9 @@ class CeleryAppConfig(AppConfig):
 
             from raven import Client as RavenClient
             from raven.contrib.celery import register_signal as raven_register_signal
-            from raven.contrib.celery import register_logger_signal as raven_register_logger_signal
-
+            from raven.contrib.celery import (
+                register_logger_signal as raven_register_logger_signal
+            )
 
             raven_client = RavenClient(dsn=settings.RAVEN_CONFIG['dsn'])
             raven_register_logger_signal(raven_client)

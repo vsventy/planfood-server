@@ -1,0 +1,42 @@
+{% extends 'admin/change_list.html' %}
+
+{% load staticfiles %}
+
+{% block extrastyle %}
+    {{ block.super }}
+
+    <link rel="stylesheet" href="{% static 'css/admin/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/widgets.css' %}">
+{% endblock %}
+
+{% block extrahead %}
+    {{ block.super }}
+
+    <script type="text/javascript" src="{% static 'admin/js/calendar.js'%}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/admin/DateTimeShortcuts.js'%}"></script>
+{% endblock %}
+
+{% block object-tools %}
+  <div id="actions-form">
+    <form action="{% url 'admin:menuday' %}" method="POST">
+      {% csrf_token %}
+
+      <div class="form-header">
+        <label class="hint">Для того, щоб створити новий меню-день, виберіть <Дату> та <Групу перебування>, а потім натисність на кнопку <Створити>:</label>
+      </div>
+
+      <div class="form-main">
+        <label class="required" for="id_date">Дата:</label>
+        <input type="text" name="date" class="vDateField" size="10" required="" id="id_date">
+        <label class="required">Група перебування:</label>
+        <select name="group">
+          <option selected="selected" disabled>---------</option>
+          {% for group in group_list %}
+              <option value="{{ group.id }}">{{ group.name }}</option>
+          {% endfor %}
+        </select>
+        <button type="submit" value="Select" class="button">Створити</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

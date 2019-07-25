@@ -1,28 +1,39 @@
 from django.conf import settings
-from django.urls import include, path
+from django.urls import include, path, re_path
+from django.utils.translation import ugettext_lazy as _
+from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
+from django.views.generic.base import RedirectView
 from django.views import defaults as default_views
 
+
+admin.site.site_header = _('Plan Food')
+admin.site.site_title = _('Plan Food')
+admin.site.index_title = _('Site administration')
+
 urlpatterns = [
-    path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
+    path("", login_required(TemplateView.as_view(template_name="pages/home.html")), name="home"),
     path(
-        "about/",
-        TemplateView.as_view(template_name="pages/about.html"),
-        name="about",
+        "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     ),
-    # Django Admin, use {% url 'admin:index' %}
-    path(settings.ADMIN_URL, admin.site.urls),
+    path("menu/", include("planfood.menu.urls", namespace="menu")),
     # User management
-    path(
-        "users/",
-        include("planfood.users.urls", namespace="users"),
-    ),
+    path("users/", include("planfood.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
-] + static(
-    settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+    re_path(
+        r'^favicon\.ico$',
+        RedirectView.as_view(url='/static/images/favicons/favicon.ico'),
+    ),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += i18n_patterns(
+    # Django Admin, use {% url 'admin:index' %}
+    path(settings.ADMIN_URL, admin.site.urls),
+    prefix_default_language=False,
 )
 
 if settings.DEBUG:

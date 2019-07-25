@@ -1,0 +1,66 @@
+#actions-form {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+#actions-form .form-main {
+  padding: 10px;
+  line-height: 24px;
+}
+
+#actions-form label {
+  font-size: 13px;
+  color: #999;
+  padding-bottom: 10px;
+}
+
+#actions-form label.hint {
+  font-weight: normal;
+  color: #666;
+}
+
+#actions-form label.required {
+  font-weight: bold;
+  color: #333;
+}
+
+#actions-form .button {
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 -15px 20px -10px rgba(0, 0, 0, 0.15) inset;
+  cursor: pointer;
+  height: 28px;
+  line-height: 1;
+  padding: 4px 8px;
+  margin: 0;
+  color: #333;
+}
+
+#actions-form select {
+  vertical-align: top;
+  height: 24px;
+  background: none;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 0 0 0 4px;
+  margin: 2px 0 0 10px;
+  height: 28px;
+}
+
+#actions-form select:focus {
+  border-color: #999;
+}
+
+#actions-form .datetimeshortcuts {
+  font-size: 13px;
+  margin-right: 40px;
+}
+
+#actions-form input.vDateField {
+  margin-left: 10px;
+}

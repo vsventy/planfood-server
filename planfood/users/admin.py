@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 
 from planfood.users.forms import UserChangeForm, UserCreationForm
 
+
 User = get_user_model()
 
 
