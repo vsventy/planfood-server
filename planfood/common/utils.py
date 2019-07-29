@@ -1,8 +1,10 @@
-from copy import copy
+import datetime
 import logging
+from copy import copy
 
 from django.http import HttpResponse
 
+import holidays
 from openpyxl.styles import Border, Side
 
 logger = logging.getLogger(__name__)
@@ -59,3 +61,13 @@ def make_spreadsheat_reponse(workbook, filename):
     workbook.save(response)
 
     return response
+
+
+def previous_business_day(date=None):
+    if date is None:
+        date = datetime.date.today()
+    ONE_DAY = datetime.timedelta(days=1)
+    previous_day = date - ONE_DAY
+    while previous_day.weekday() in holidays.WEEKEND or previous_day in holidays.UA():
+        previous_day -= ONE_DAY
+    return previous_day
