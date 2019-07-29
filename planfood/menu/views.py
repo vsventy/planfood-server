@@ -19,6 +19,7 @@ from planfood.common.utils import (
     get_cell_by_value,
     clone_cell_style,
     make_spreadsheat_reponse,
+    previous_business_day,
     render_worksheet,
     set_cells_border,
 )
@@ -50,6 +51,7 @@ def init_menu_dict():
             'first_total_number',
             'first_issued_header',
             'menu_day',
+            'signature_day',
             'nurse_post',
             'nurse_initials',
             'senior_nurse_post',
@@ -141,6 +143,7 @@ def fill_workbook(workbook, settings, menu_day, group_name, menu_cells, demand_c
 
     d = init_menu_dict()
     d['menu_day'] = menu_day.date.strftime('%d.%m.%Y')
+    d['signature_day'] = previous_business_day(menu_day.date).strftime('%d.%m.%Y')
     d['group_name'] = group_name
     d['director_initials'] = settings.director_initials
     d['nurse_post'] = settings.nurse_post
