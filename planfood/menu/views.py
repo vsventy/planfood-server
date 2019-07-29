@@ -105,7 +105,7 @@ def create_menu_report_xlsx(request, menuday_id=None):
     format_menu_worksheet(workbook, menu_day, group_name, menu_template_cells)
     format_demand_worksheet(workbook, number_of_products, demand_template_cells)
 
-    group_name = group_name.replace(' ', '').replace(',', '_')
+    group_name = group_name.replace(', ', '_').replace(' ', '_')
     filename = '{date}_{group}'.format(
         date=menu_day.date.strftime('%Y-%m-%d'), group=escape_uri_path(group_name)
     )
@@ -338,11 +338,23 @@ def fill_workbook(workbook, settings, menu_day, group_name, menu_cells, demand_c
                 column=demand_row.column + column_index,
                 value=norm,
             )
+            demand_worksheet.cell(
+                row=demand_row.row + n,
+                column=demand_row.column + 7 + column_index,
+                value=norm,
+            )
             column_index += 1
         demand_worksheet.cell(
             row=demand_row.row + n,
             column=demand_row.column + 9,
-            value=sum(product['norms']),
+            value='=SUM(E{}:I{})'.format(  # sum(product['norms'])
+                demand_row.row + n, demand_row.row + n
+            ),
+        )
+        demand_worksheet.cell(
+            row=demand_row.row + n,
+            column=demand_row.column + 16,
+            value='=SUM(L{}:P{})'.format(demand_row.row + n, demand_row.row + n),
         )
         n += 1
         number_of_products = len(products_dict)
