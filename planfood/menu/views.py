@@ -222,7 +222,11 @@ def fill_workbook(workbook, settings, menu_day, group_name, menu_cells, demand_c
 
             # dish outputs
             column_index = 1
-            for output in dish.outputs.filter(group=group).iterator():
+            for output in (
+                dish.outputs.filter(group=group)
+                .order_by('age_category__sort')
+                .iterator()
+            ):
                 menu_worksheet.cell(
                     row=dish_cell.row,
                     column=dish_cell.column + column_index,
