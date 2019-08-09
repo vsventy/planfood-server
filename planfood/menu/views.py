@@ -286,9 +286,10 @@ def fill_workbook(workbook, settings, menu_day, group_name, menu_cells, demand_c
                         row=total_cell.row + column_index, column=total_cell.column + 3
                     ).value
 
-                    calculated_products_norms.append(
-                        product_norm_cell.value * total_value
-                    )
+                    if total_value is not None:
+                        calculated_products_norms.append(
+                            product_norm_cell.value * total_value
+                        )
                     column_index += 1
 
                 products_norms = products_dict[product.item_number]['norms']
