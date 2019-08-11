@@ -35,7 +35,7 @@
       .then(function(response) {
         let taskStatus = response.data.task_status
         if (taskStatus === 'SUCCESS') {
-          clearTimer('{% trans "Check ownloads for results" %}');
+          clearTimer('{% trans "Check downloads for results" %}');
           var url = window.location.protocol + '//' + window.location.host + response.data.results.report_path;
           var a = document.createElement("a");
           a.target = '_BLANK';
