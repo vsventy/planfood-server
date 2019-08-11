@@ -26,6 +26,10 @@ class MenuDay(StatusModel, TimeStampedModel):
     def __str__(self):
         return str(self.date)
 
+    @property
+    def group(self):
+        return self.numbers_of_persons.first().group
+
 
 class NumberOfPersons(TimeStampedModel):
     age_category = models.ForeignKey(
