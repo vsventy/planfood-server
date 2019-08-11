@@ -9,6 +9,9 @@ from django.views.generic import TemplateView
 from django.views.generic.base import RedirectView
 from django.views import defaults as default_views
 
+from planfood.common.views import TaskView
+from planfood.menu.views import NormsAnalysisView
+
 
 admin.site.site_header = _('Plan Food')
 admin.site.site_title = _('Plan Food')
@@ -19,7 +22,9 @@ urlpatterns = [
     path(
         "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     ),
+    path("norms-analysis/", NormsAnalysisView.as_view(), name="norms_analysis"),
     path("menu/", include("planfood.menu.urls", namespace="menu")),
+    path('task/<str:task_id>/', TaskView.as_view(), name='task'),
     # User management
     path("users/", include("planfood.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),

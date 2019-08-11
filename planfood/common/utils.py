@@ -6,6 +6,7 @@ from django.http import HttpResponse
 
 import holidays
 from openpyxl.styles import Border, Side
+from openpyxl.styles.alignment import Alignment
 
 logger = logging.getLogger(__name__)
 
@@ -41,6 +42,14 @@ def clone_cell_style(source, target):
         target.alignment = copy(source.alignment)
 
 
+def set_text_style(cell, name='Arial', size=10.0, bold=False, italic=False):
+    cell.font = cell.font.copy(name=name, bold=bold, italic=italic, sz=size)
+
+
+def set_alignment(cell, indent=0):
+    cell.alignment = Alignment(indent=indent)
+
+
 def render_worksheet(worksheet, d, min_row=1, max_column=20, max_row=200):
     for row in worksheet.iter_rows(
         min_row=min_row, max_col=max_column, max_row=max_row
@@ -71,3 +80,6 @@ def previous_business_day(date=None):
     while previous_day.weekday() in holidays.WEEKEND or previous_day in holidays.UA():
         previous_day -= ONE_DAY
     return previous_day
+
+
+downcase_first_character = lambda s: s[:1].lower() + s[1:] if s else ''

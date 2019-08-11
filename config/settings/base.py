@@ -3,6 +3,7 @@ Base settings to build other settings files upon.
 """
 
 import environ
+import os
 
 from django.utils.translation import gettext_lazy as _
 
@@ -160,6 +161,10 @@ STATICFILES_FINDERS = [
 MEDIA_ROOT = str(APPS_DIR('media'))
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = '/media/'
+
+REPORTS_DIR = str(APPS_DIR.path('media/reports'))
+if not os.path.exists(MEDIA_ROOT) or not os.path.exists(REPORTS_DIR):
+    os.makedirs(REPORTS_DIR)
 
 # TEMPLATES
 # ------------------------------------------------------------------------------

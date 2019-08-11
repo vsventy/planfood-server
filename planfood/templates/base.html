@@ -61,6 +61,9 @@
                 <a class="nav-link" href="{% url 'admin:index' %}">{% trans "Administration" %}</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="{% url 'norms_analysis' %}">{% trans "Norms Analysis" %}</a>
+              </li>
+              <li class="nav-item">
                 {# URL provided by django-allauth/account/urls.py #}
                 <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
               </li>
@@ -116,7 +119,7 @@
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
       <!-- Your stuff: Third-party javascript libraries go here -->
-
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
       <!-- place project specific Javascript in this file -->
 
@@ -124,6 +127,8 @@
 
 
     {% endblock javascript %}
+
+    {% block extra_javascript %}{% endblock extra_javascript %}
   </body>
 </html>
 
