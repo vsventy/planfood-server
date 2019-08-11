@@ -1,4 +1,5 @@
 import logging
+import os
 
 from .base import *  # noqa
 from .base import env
@@ -112,6 +113,10 @@ STATIC_ROOT = env('DJANGO_STATIC_ROOT', default=str(APPS_DIR('staticfiles')))
 # MEDIA
 # ------------------------------------------------------------------------------
 MEDIA_ROOT = env('DJANGO_MEDIA_ROOT', default=str(APPS_DIR('media')))
+
+REPORTS_DIR = env('REPORTS_DIR', default=os.path.join(MEDIA_ROOT, 'reports'))
+if not os.path.exists(MEDIA_ROOT) or not os.path.exists(REPORTS_DIR):
+    os.makedirs(REPORTS_DIR)
 
 # raven
 # ------------------------------------------------------------------------------

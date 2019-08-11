@@ -9,7 +9,7 @@ from django.views.generic import TemplateView
 from django.views.generic.base import RedirectView
 from django.views import defaults as default_views
 
-from planfood.common.views import TaskView
+from planfood.common.views import TaskView, serve_protected_document
 from planfood.menu.views import NormsAnalysisView
 
 
@@ -18,7 +18,11 @@ admin.site.site_title = _('Plan Food')
 admin.site.index_title = _('Site administration')
 
 urlpatterns = [
-    path("", login_required(TemplateView.as_view(template_name="pages/home.html")), name="home"),
+    path(
+        "",
+        login_required(TemplateView.as_view(template_name="pages/home.html")),
+        name="home",
+    ),
     path(
         "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     ),
@@ -32,6 +36,11 @@ urlpatterns = [
     re_path(
         r'^favicon\.ico$',
         RedirectView.as_view(url='/static/images/favicons/favicon.ico'),
+    ),
+    re_path(
+        r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:],
+        serve_protected_document,
+        {'document_root': settings.MEDIA_ROOT},
     ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
