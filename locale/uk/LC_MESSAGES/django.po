@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-24 22:21+0300\n"
+"POT-Creation-Date: 2019-08-11 19:36+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,20 +19,20 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: config/settings/base.py:33
+#: config/settings/base.py:34
 msgid "Ukrainian"
 msgstr "Українська"
 
-#: config/settings/base.py:33
+#: config/settings/base.py:34
 msgid "English"
 msgstr "Англійська"
 
-#: config/urls.py:13 config/urls.py:14 planfood/templates/base.html:6
-#: planfood/templates/base.html:48
+#: config/urls.py:16 config/urls.py:17 planfood/templates/base.html:8
+#: planfood/templates/base.html:51
 msgid "Plan Food"
 msgstr "Облік харчування"
 
-#: config/urls.py:15
+#: config/urls.py:18
 msgid "Site administration"
 msgstr "Адміністрування сайту"
 
@@ -68,7 +68,7 @@ msgid "Age categories"
 msgstr "Вікові категорії"
 
 #: planfood/common/models.py:17 planfood/dishes/models.py:44
-#: planfood/dishes/models.py:91 planfood/menu/models.py:33
+#: planfood/dishes/models.py:91 planfood/menu/models.py:37
 #: planfood/products/models.py:62
 msgid "Age category"
 msgstr "Вікова категорія"
@@ -83,7 +83,8 @@ msgstr "Групи"
 
 #: planfood/common/models.py:34 planfood/dishes/models.py:52
 #: planfood/dishes/models.py:99 planfood/menu/admin.py:111
-#: planfood/menu/models.py:41 planfood/products/models.py:70
+#: planfood/menu/forms.py:13 planfood/menu/models.py:45
+#: planfood/products/models.py:70
 msgid "Group"
 msgstr "Група"
 
@@ -153,7 +154,7 @@ msgstr "Картотека страв"
 msgid "Products"
 msgstr "Продукти"
 
-#: planfood/dishes/models.py:30 planfood/menu/models.py:91
+#: planfood/dishes/models.py:30 planfood/menu/models.py:95
 msgid "Dishes"
 msgstr "Страви"
 
@@ -163,7 +164,7 @@ msgid "Dish"
 msgstr "Страва"
 
 #: planfood/dishes/models.py:67 planfood/dishes/models.py:107
-#: planfood/menu/models.py:54 planfood/products/models.py:78
+#: planfood/menu/models.py:58 planfood/products/models.py:78
 msgid "Value"
 msgstr "Значення"
 
@@ -203,6 +204,10 @@ msgstr "Дії"
 msgid "Menu"
 msgstr "Меню"
 
+#: planfood/menu/forms.py:10
+msgid "Month / Year"
+msgstr "Місяць / Рік"
+
 #: planfood/menu/models.py:15
 msgid "draft"
 msgstr "чернетка"
@@ -227,68 +232,68 @@ msgstr ""
 msgid "Menu days"
 msgstr "Меню-дні"
 
-#: planfood/menu/models.py:24 planfood/menu/models.py:49
-#: planfood/menu/models.py:84
+#: planfood/menu/models.py:24 planfood/menu/models.py:53
+#: planfood/menu/models.py:88
 msgid "Menu day"
 msgstr "Меню-день"
 
-#: planfood/menu/models.py:57
+#: planfood/menu/models.py:61
 msgid "A total number of persons / A number of persons as day stay"
 msgstr "Всього осіб / Кількість осіб денного перебування"
 
-#: planfood/menu/models.py:60
+#: planfood/menu/models.py:64
 msgid "Value 2"
 msgstr "Значення 2"
 
-#: planfood/menu/models.py:63
+#: planfood/menu/models.py:67
 msgid "A number of persons as outpatient"
 msgstr "Кількість осіб амбулаторного перебування"
 
-#: planfood/menu/models.py:67
+#: planfood/menu/models.py:71
 msgid "Numbers of persons"
 msgstr "Кількість осіб"
 
-#: planfood/menu/models.py:68
+#: planfood/menu/models.py:72
 msgid "Number of persons"
 msgstr "Кількість осіб"
 
-#: planfood/menu/models.py:76
+#: planfood/menu/models.py:80
 msgid "Breakfast"
 msgstr "Сніданок"
 
-#: planfood/menu/models.py:77
+#: planfood/menu/models.py:81
 msgid "Lunch"
 msgstr "Обід"
 
-#: planfood/menu/models.py:78
+#: planfood/menu/models.py:82
 msgid "Afternoon Snack"
 msgstr "Полуденок"
 
-#: planfood/menu/models.py:79
+#: planfood/menu/models.py:83
 msgid "Dinner"
 msgstr "Вечеря"
 
-#: planfood/menu/models.py:80
+#: planfood/menu/models.py:84
 msgid "Tea"
 msgstr "Підвечірок"
 
-#: planfood/menu/models.py:94
+#: planfood/menu/models.py:98
 msgid "Period"
 msgstr "Період"
 
-#: planfood/menu/models.py:97
+#: planfood/menu/models.py:101
 msgid "Set of dishes"
 msgstr "Набір страв"
 
-#: planfood/menu/models.py:98
+#: planfood/menu/models.py:102
 msgid "Dish item"
 msgstr "Позиція страви"
 
-#: planfood/menu/views.py:73
+#: planfood/menu/views.py:81
 msgid "No menu day selected."
 msgstr ""
 
-#: planfood/menu/views.py:81
+#: planfood/menu/views.py:89
 msgid "No default settings. Please set them in the admin panel and try again."
 msgstr ""
 
@@ -412,7 +417,7 @@ msgstr ""
 
 #: planfood/templates/account/login.html:7
 #: planfood/templates/account/login.html:11
-#: planfood/templates/account/login.html:44 planfood/templates/base.html:67
+#: planfood/templates/account/login.html:44 planfood/templates/base.html:73
 msgid "Sign In"
 msgstr ""
 
@@ -442,7 +447,7 @@ msgstr ""
 
 #: planfood/templates/account/logout.html:5
 #: planfood/templates/account/logout.html:8
-#: planfood/templates/account/logout.html:17 planfood/templates/base.html:62
+#: planfood/templates/account/logout.html:17 planfood/templates/base.html:68
 msgid "Sign Out"
 msgstr ""
 
@@ -573,15 +578,35 @@ msgid ""
 "mail address</a>."
 msgstr ""
 
-#: planfood/templates/base.html:54
+#: planfood/templates/base.html:57
 msgid "Home"
 msgstr "Головна"
 
-#: planfood/templates/base.html:58
+#: planfood/templates/base.html:61
 #, fuzzy
 #| msgid "Site administration"
 msgid "Administration"
 msgstr "Адміністрування сайту"
+
+#: planfood/templates/base.html:64 planfood/templates/menu/home.html:11
+msgid "Norms Analysis"
+msgstr "Аналіз норм"
+
+#: planfood/templates/menu/home.html:17
+msgid "Generate Report"
+msgstr "Сформувати Звіт"
+
+#: planfood/templates/menu/home.html:38
+msgid "Check downloads for results"
+msgstr "Перейдіть в \"Завантаження\" для ознайомлення з результатом"
+
+#: planfood/templates/menu/home.html:49
+msgid "An error occurred"
+msgstr "Виникла помилка"
+
+#: planfood/templates/menu/home.html:63
+msgid "Generating report"
+msgstr "Генерація звіту"
 
 #: planfood/users/apps.py:8
 msgid "Users"
@@ -599,8 +624,8 @@ msgstr "Ім'я користувача"
 msgid "Can show logged users"
 msgstr "Може переглядати залогінених користувачів"
 
-#~ msgid "Download Report"
-#~ msgstr "Завантажити Звіт"
+#~ msgid "Month"
+#~ msgstr "Місяць"
 
 #~ msgid "About"
 #~ msgstr "Про сайт"

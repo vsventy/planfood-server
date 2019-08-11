@@ -1,12 +1,16 @@
+import json
 import os.path
 import logging
-from datetime import datetime
-from typing import Any, Dict
+from datetime import datetime, timedelta, date
+from dateutil.relativedelta import relativedelta
+from typing import Any, Dict, Type
 
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
 from django.utils.encoding import escape_uri_path
 from django.utils.translation import ugettext_lazy as _
+from django.views import View
 
 from openpyxl import load_workbook
 from openpyxl.styles import Border, numbers, Side
@@ -23,7 +27,9 @@ from planfood.common.utils import (
     render_worksheet,
     set_cells_border,
 )
+from .forms import NormsAnalysisForm
 from .models import DishItem, MenuDay
+from .tasks import create_norms_analysis_report
 
 
 BASE = os.path.dirname(os.path.abspath(__file__))
@@ -84,10 +90,7 @@ def create_menu_report_xlsx(request, menuday_id=None):
         )
         return HttpResponseRedirect('/')
 
-    groups = menu_day.numbers_of_persons.values_list(
-        'group__name', flat=True
-    ).distinct()
-    group_name = groups.first()
+    group_name = menu_day.group.name
 
     workbook = load_workbook(abs_report_path)
 
@@ -95,14 +98,9 @@ def create_menu_report_xlsx(request, menuday_id=None):
     demand_template_cells = get_demand_template_cells(workbook)
 
     number_of_products = fill_workbook(
-        workbook,
-        settings,
-        menu_day,
-        group_name,
-        menu_template_cells,
-        demand_template_cells,
+        workbook, settings, menu_day, menu_template_cells, demand_template_cells
     )
-    format_menu_worksheet(workbook, menu_day, group_name, menu_template_cells)
+    format_menu_worksheet(workbook, menu_day, menu_template_cells)
     format_demand_worksheet(workbook, number_of_products, demand_template_cells)
 
     group_name = group_name.replace(', ', '_').replace(' ', '_')
@@ -137,14 +135,14 @@ def get_demand_template_cells(workbook):
     }
 
 
-def fill_workbook(workbook, settings, menu_day, group_name, menu_cells, demand_cells):
+def fill_workbook(workbook, settings, menu_day, menu_cells, demand_cells):
     menu_worksheet = workbook[MENU_WORKSHEET_NAME]
     demand_worksheet = workbook[DEMAND_WORKSHEET_NAME]
 
     d = init_menu_dict()
     d['menu_day'] = menu_day.date.strftime('%d.%m.%Y')
     d['signature_day'] = previous_business_day(menu_day.date).strftime('%d.%m.%Y')
-    d['group_name'] = group_name
+    d['group_name'] = menu_day.group.name
     d['director_initials'] = settings.director_initials
     d['nurse_post'] = settings.nurse_post
     d['nurse_initials'] = settings.nurse_initials
@@ -175,7 +173,7 @@ def fill_workbook(workbook, settings, menu_day, group_name, menu_cells, demand_c
     menu_products_header = menu_cells['products_header']
     demand_products_header = demand_cells['products_header']
     demand_issued_header = demand_cells['issued_header']
-    group = Group.objects.get(name=group_name)
+    group = menu_day.group
     index = 0
     for age_category in group.age_categories.iterator():
         menu_worksheet.cell(
@@ -371,14 +369,14 @@ def fill_workbook(workbook, settings, menu_day, group_name, menu_cells, demand_c
     return number_of_products
 
 
-def format_menu_worksheet(workbook, menu_day, group_name, menu_cells):
+def format_menu_worksheet(workbook, menu_day, menu_cells):
     menu_worksheet = workbook[MENU_WORKSHEET_NAME]
 
     menu_row = menu_cells['menu_row']
     norm_cell = menu_cells['norm_header']
     products_cell = menu_cells['products_header']
     total_cell = menu_cells['total_age_category']
-    group = Group.objects.get(name=group_name)
+    group = menu_day.group
     dish_items = menu_day.dish_items.order_by('period')
     index = 0
     d_index = 0
@@ -512,3 +510,31 @@ def format_demand_worksheet(workbook, number_of_products, demand_cells):
                 active_demand_cell.alignment = Alignment(horizontal='right')
             else:
                 active_demand_cell.alignment = Alignment(horizontal='left')
+
+
+class NormsAnalysisView(View):
+    def get(self, request):
+        form = NormsAnalysisForm(initial={'month': date.today()})
+        context = {}
+        context['form'] = form
+        return render(request, 'menu/home.html', context)
+
+    def post(self, request):
+        form = NormsAnalysisForm(request.POST)  # type: Type[NormsAnalysisForm]
+        context = {}
+
+        if form.is_valid():
+            start_date = form.cleaned_data.get('month')
+            end_date = start_date + relativedelta(months=1) - timedelta(days=1)
+            group = form.cleaned_data.get('group')
+            task = create_norms_analysis_report.delay(
+                start_date.strftime('%Y-%m-%d'), end_date.strftime('%Y-%m-%d'), group.pk
+            )
+            context['task_id'] = task.id
+            context['task_status'] = task.status
+
+            return render(request, 'menu/home.html', context)
+
+        context['form'] = form
+
+        return render(request, 'menu/home.html', context)
