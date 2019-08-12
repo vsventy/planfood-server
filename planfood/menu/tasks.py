@@ -188,6 +188,10 @@ def fill_norms_analysis_workbook(workbook, product_categories):
                 col_index = 4
                 day_count = 0
                 for day, issued_values in product.items():
+                    if day_count == 10:
+                        col_index += 2
+                    elif day_count == 20:
+                        col_index += 4
                     worksheet.cell(
                         row=FIRST_NORMS_ANALYSIS_ROW - 1, column=col_index, value=day
                     )
@@ -203,8 +207,14 @@ def fill_norms_analysis_workbook(workbook, product_categories):
                 index += 1
 
             for j in range(day_count):
+                if j < 10:
+                    col_index = j
+                elif 10 <= j < 20:
+                    col_index = j + 2
+                elif j >= 20:
+                    col_index = j + 4
                 total_issued_by_day = worksheet.cell(
-                    row=FIRST_NORMS_ANALYSIS_ROW + category_index, column=4 + j
+                    row=FIRST_NORMS_ANALYSIS_ROW + category_index, column=4 + col_index
                 )
                 total_issued_by_day.value = '=SUM({}{}:{}{})'.format(
                     total_issued_by_day.column_letter,
@@ -217,9 +227,22 @@ def fill_norms_analysis_workbook(workbook, product_categories):
             average_by_days.value = '=AVERAGEIF(D{}:M{},">=0")'.format(
                 category_row, category_row
             )
+            average_by_days = worksheet.cell(row=category_row, column=4 + 22)
+            average_by_days.value = '=AVERAGEIF(P{}:Y{},">=0")'.format(
+                category_row, category_row
+            )
 
             delta_result = worksheet.cell(row=category_row, column=4 + 11)
             delta_result.value = '=N{}-C{}'.format(category_row, category_row)
+            delta_result = worksheet.cell(row=category_row, column=4 + 23)
+            delta_result.value = '=Z{}-C{}'.format(category_row, category_row)
+
+            average_month_result = worksheet.cell(row=category_row, column=4 + 24)
+            average_month_result.value = '=AVERAGE(N{},Z{})'.format(category_row, category_row)
+            delta_month_result = worksheet.cell(row=category_row, column=4 + 25)
+            delta_month_result.value = '=AB{}-C{}'.format(category_row, category_row)
+            completion_month = worksheet.cell(row=category_row, column=4 + 26)
+            completion_month.value = '=AB{}*100/C{}'.format(category_row, category_row)
 
         worksheet_index += 1
 
@@ -237,8 +260,10 @@ def format_norms_analysis_workbook(workbook, number_of_rows, product_categories)
                     row=first_cell.row + i, column=first_cell.column + j
                 )
                 clone_cell_style(first_cell, active_cell)
-                if j in (2, 13, 14):
+                if j in (2, 13, 14) or j > 24:
                     active_cell.alignment = Alignment(horizontal='center')
+                if j in (13, 14) or j > 24:
+                    active_cell.number_format = '0.0'
 
         index = 0
         for _, category in product_categories.items():
