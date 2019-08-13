@@ -39,6 +39,8 @@ class MenuDayAdmin(admin.ModelAdmin):
     readonly_fields = ('status_changed',)
     change_list_template = "admin/menu_change_list.html"
     inlines = [NumberOfPersonsInline, DishItemInline]
+    actions = ['make_published', 'make_draft']
+    list_filter = ('date', 'status')
 
     def menuday_actions(self, obj):
         return format_html(
@@ -117,6 +119,22 @@ class MenuDayAdmin(admin.ModelAdmin):
                 )
         return HttpResponseRedirect("../")
 
+    def make_published(self, request, queryset):
+        queryset.update(status=MenuDay.STATUS.published)
+        self.message_user(
+            request, _('Selected menu days was published'), messages.SUCCESS
+        )
+
+    def make_draft(self, request, queryset):
+        queryset.update(status=MenuDay.STATUS.draft)
+        self.message_user(
+            request, _('Selected menu days was marked as draft'), messages.SUCCESS
+        )
+
     group_name.short_description = _('Group')  # type: ignore
     dishes_count.short_description = _('Count of Dishes by period')  # type: ignore
     menuday_actions.short_description = _('Actions')  # type: ignore
+    make_published.short_description = _(  # type: ignore
+        'Mark selected menu days as published'
+    )
+    make_draft.short_description = _('Mark selected menu days as draft')  # type: ignore
