@@ -38,6 +38,12 @@ class Product(TimeStampedModel):
         decimal_places=2,
         default=Decimal('0.00'),
     )
+    convert_ratio = models.DecimalField(
+        verbose_name=_('Convert ratio'),
+        max_digits=10,
+        decimal_places=2,
+        default=Decimal('1.00'),
+    )
 
     class Meta:
         ordering = ['name']

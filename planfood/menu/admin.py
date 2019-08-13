@@ -1,3 +1,4 @@
+import logging
 from datetime import datetime
 
 from django.contrib import admin, messages
@@ -15,16 +16,20 @@ from planfood.menu.models import DishItem
 from .models import MenuDay, NumberOfPersons
 from .views import create_menu_report_xlsx
 
+logger = logging.getLogger(__name__)
+
 
 class DishItemInline(admin.TabularInline):
     model = DishItem
+    extra = 0
     fields = ('period', 'dishes')
     filter_horizontal = ('dishes',)
 
 
 class NumberOfPersonsInline(admin.TabularInline):
     model = NumberOfPersons
-    fields = ('group', 'age_category', 'value', 'value_2')
+    extra = 0
+    fields = ('group', 'age_category', 'value')
 
 
 @admin.register(MenuDay)
@@ -34,6 +39,8 @@ class MenuDayAdmin(admin.ModelAdmin):
     readonly_fields = ('status_changed',)
     change_list_template = "admin/menu_change_list.html"
     inlines = [NumberOfPersonsInline, DishItemInline]
+    actions = ['make_published', 'make_draft']
+    list_filter = ('date', 'status')
 
     def menuday_actions(self, obj):
         return format_html(
@@ -89,6 +96,10 @@ class MenuDayAdmin(admin.ModelAdmin):
                         NumberOfPersons.objects.create(
                             age_category=age_category, group=group, menu_day=menu_day
                         )
+                    for period in DishItem.PERIOD:
+                        (period_value, period_name) = period
+                        DishItem.objects.create(menu_day=menu_day, period=period_value)
+
                 except ValueError:
                     raise ValidationError(
                         "Invalid group_pk value: {0}".format(escape(answer))
@@ -108,6 +119,22 @@ class MenuDayAdmin(admin.ModelAdmin):
                 )
         return HttpResponseRedirect("../")
 
+    def make_published(self, request, queryset):
+        queryset.update(status=MenuDay.STATUS.published)
+        self.message_user(
+            request, _('Selected menu days was published'), messages.SUCCESS
+        )
+
+    def make_draft(self, request, queryset):
+        queryset.update(status=MenuDay.STATUS.draft)
+        self.message_user(
+            request, _('Selected menu days was marked as draft'), messages.SUCCESS
+        )
+
     group_name.short_description = _('Group')  # type: ignore
     dishes_count.short_description = _('Count of Dishes by period')  # type: ignore
     menuday_actions.short_description = _('Actions')  # type: ignore
+    make_published.short_description = _(  # type: ignore
+        'Mark selected menu days as published'
+    )
+    make_draft.short_description = _('Mark selected menu days as draft')  # type: ignore

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-11 19:36+0300\n"
+"POT-Creation-Date: 2019-08-13 22:55+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,7 +69,7 @@ msgstr "Вікові категорії"
 
 #: planfood/common/models.py:17 planfood/dishes/models.py:44
 #: planfood/dishes/models.py:91 planfood/menu/models.py:37
-#: planfood/products/models.py:62
+#: planfood/products/models.py:68
 msgid "Age category"
 msgstr "Вікова категорія"
 
@@ -82,9 +82,9 @@ msgid "Groups"
 msgstr "Групи"
 
 #: planfood/common/models.py:34 planfood/dishes/models.py:52
-#: planfood/dishes/models.py:99 planfood/menu/admin.py:111
+#: planfood/dishes/models.py:99 planfood/menu/admin.py:134
 #: planfood/menu/forms.py:13 planfood/menu/models.py:45
-#: planfood/products/models.py:70
+#: planfood/products/models.py:76
 msgid "Group"
 msgstr "Група"
 
@@ -101,7 +101,7 @@ msgid "Product categories"
 msgstr "Категорії продуктів"
 
 #: planfood/common/models.py:62 planfood/products/models.py:23
-#: planfood/products/models.py:54
+#: planfood/products/models.py:60
 msgid "Product category"
 msgstr "Категорія продукту"
 
@@ -150,7 +150,7 @@ msgid "Card of dishes"
 msgstr "Картотека страв"
 
 #: planfood/dishes/models.py:15 planfood/products/apps.py:7
-#: planfood/products/models.py:44
+#: planfood/products/models.py:50
 msgid "Products"
 msgstr "Продукти"
 
@@ -164,7 +164,7 @@ msgid "Dish"
 msgstr "Страва"
 
 #: planfood/dishes/models.py:67 planfood/dishes/models.py:107
-#: planfood/menu/models.py:58 planfood/products/models.py:78
+#: planfood/menu/models.py:58 planfood/products/models.py:84
 msgid "Value"
 msgstr "Значення"
 
@@ -176,29 +176,45 @@ msgstr "Вихід-значення"
 msgid "Output value"
 msgstr "Вихід-значення"
 
-#: planfood/dishes/models.py:83 planfood/products/models.py:45
+#: planfood/dishes/models.py:83 planfood/products/models.py:51
 msgid "Product"
 msgstr "Продукт"
 
-#: planfood/dishes/models.py:114 planfood/products/models.py:85
+#: planfood/dishes/models.py:114 planfood/products/models.py:91
 msgid "Norms"
 msgstr "Норми"
 
-#: planfood/dishes/models.py:115 planfood/products/models.py:86
+#: planfood/dishes/models.py:115 planfood/products/models.py:92
 msgid "Norm"
 msgstr "Норма"
 
-#: planfood/menu/admin.py:42
+#: planfood/menu/admin.py:49
 msgid "Menu/Demand"
 msgstr "Меню/Вимога"
 
-#: planfood/menu/admin.py:112
+#: planfood/menu/admin.py:125
+msgid "Selected menu days was published"
+msgstr "Вибрані меню-дні були опубліковані"
+
+#: planfood/menu/admin.py:131
+msgid "Selected menu days was marked as draft"
+msgstr "Вибрані меню-дні були позначені як чернетки"
+
+#: planfood/menu/admin.py:135
 msgid "Count of Dishes by period"
 msgstr "Кількість страв за періодами"
 
-#: planfood/menu/admin.py:113
+#: planfood/menu/admin.py:136
 msgid "Actions"
 msgstr "Дії"
+
+#: planfood/menu/admin.py:138
+msgid "Mark selected menu days as published"
+msgstr "Опублікувати вибрані меню-дні"
+
+#: planfood/menu/admin.py:140
+msgid "Mark selected menu days as draft"
+msgstr "Позначити вибрані меню-дні як чернетки"
 
 #: planfood/menu/apps.py:7
 msgid "Menu"
@@ -324,6 +340,10 @@ msgstr "Одиниця"
 #: planfood/products/models.py:36
 msgid "Unit price"
 msgstr "Ціна за одиницю"
+
+#: planfood/products/models.py:42
+msgid "Convert ratio"
+msgstr "Коефіцієнт конвертації"
 
 #: planfood/templates/account/account_inactive.html:5
 #: planfood/templates/account/account_inactive.html:8
