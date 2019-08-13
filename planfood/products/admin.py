@@ -24,6 +24,6 @@ class ProductResource(resources.ModelResource):
 
 @admin.register(Product)
 class ProductAdmin(ImportExportModelAdmin):
-    fields = ('item_number', 'name', 'category', 'unit')
+    fields = ('item_number', 'name', 'category', 'unit', 'convert_ratio')
     list_display = ('item_number', 'name', 'category')
     resource_class = ProductResource

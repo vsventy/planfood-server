@@ -84,7 +84,8 @@ def create_norms_analysis_report(start_date, end_date, id_group):
                     for norm in product_norms.iterator():
                         calculated_products_norms.append(
                             norm.value
-                            * (1 if persons_numbers[index] > 0 else 0)  # per one person
+                            * (1 if persons_numbers[index] > 0 else 0)
+                            / product.convert_ratio  # per one person
                         )
                         index += 1
                     product_day_dict = product_categories[category_name][product_name][
