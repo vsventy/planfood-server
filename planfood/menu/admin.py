@@ -1,3 +1,4 @@
+import logging
 from datetime import datetime
 
 from django.contrib import admin, messages
@@ -15,16 +16,20 @@ from planfood.menu.models import DishItem
 from .models import MenuDay, NumberOfPersons
 from .views import create_menu_report_xlsx
 
+logger = logging.getLogger(__name__)
+
 
 class DishItemInline(admin.TabularInline):
     model = DishItem
+    extra = 0
     fields = ('period', 'dishes')
     filter_horizontal = ('dishes',)
 
 
 class NumberOfPersonsInline(admin.TabularInline):
     model = NumberOfPersons
-    fields = ('group', 'age_category', 'value', 'value_2')
+    extra = 0
+    fields = ('group', 'age_category', 'value')
 
 
 @admin.register(MenuDay)
@@ -89,6 +94,10 @@ class MenuDayAdmin(admin.ModelAdmin):
                         NumberOfPersons.objects.create(
                             age_category=age_category, group=group, menu_day=menu_day
                         )
+                    for period in DishItem.PERIOD:
+                        (period_value, period_name) = period
+                        DishItem.objects.create(menu_day=menu_day, period=period_value)
+
                 except ValueError:
                     raise ValidationError(
                         "Invalid group_pk value: {0}".format(escape(answer))
