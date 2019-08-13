@@ -224,11 +224,11 @@ def fill_norms_analysis_workbook(workbook, product_categories):
                 )
             category_row = FIRST_NORMS_ANALYSIS_ROW + category_index
             average_by_days = worksheet.cell(row=category_row, column=4 + 10)
-            average_by_days.value = '=AVERAGEIF(D{}:M{},">=0")'.format(
+            average_by_days.value = '=IFERROR(AVERAGEIF(D{}:M{},">=0"),0)'.format(
                 category_row, category_row
             )
             average_by_days = worksheet.cell(row=category_row, column=4 + 22)
-            average_by_days.value = '=AVERAGEIF(P{}:Y{},">=0")'.format(
+            average_by_days.value = '=IFERROR(AVERAGEIF(P{}:Y{},">=0"),0)'.format(
                 category_row, category_row
             )
 
@@ -238,13 +238,15 @@ def fill_norms_analysis_workbook(workbook, product_categories):
             delta_result.value = '=Z{}-C{}'.format(category_row, category_row)
 
             average_month_result = worksheet.cell(row=category_row, column=4 + 24)
-            average_month_result.value = '=AVERAGE(N{},Z{})'.format(
+            average_month_result.value = '=IFERROR(AVERAGE(N{},Z{}),0)'.format(
                 category_row, category_row
             )
             delta_month_result = worksheet.cell(row=category_row, column=4 + 25)
             delta_month_result.value = '=AB{}-C{}'.format(category_row, category_row)
             completion_month = worksheet.cell(row=category_row, column=4 + 26)
-            completion_month.value = '=AB{}*100/C{}'.format(category_row, category_row)
+            completion_month.value = '=IFERROR(AB{}*100/C{},0)'.format(
+                category_row, category_row
+            )
 
         worksheet_index += 1
 
