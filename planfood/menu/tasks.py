@@ -78,7 +78,7 @@ def create_norms_analysis_report(start_date, end_date, id_group):
                     # product norms
                     product_norms = dish.norms.filter(
                         group__pk=id_group, product=product
-                    )
+                    ).order_by('age_category__sort')
                     index = 0
                     calculated_products_norms = []
                     for norm in product_norms.iterator():
