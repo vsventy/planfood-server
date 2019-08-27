@@ -1,4 +1,11 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block content %}
+<div class="pf-background">
+  <div class="pf-background-wrapper">
+    <div class="pf-background-inner" style="background-image: url({% static 'images/background.jpg' %}); background-position: center bottom;"></div>
+  </div>
+</div>
 {% endblock content %}

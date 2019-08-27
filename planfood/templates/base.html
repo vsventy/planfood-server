@@ -87,19 +87,6 @@
 
     </header>
 
-    <footer class="footer">
-      <div class="container-fluid d-flex">
-        <div>
-          <small class="text-muted">
-            &copy; Вараський міський центр комплексної реабілітації для осіб з інвалідністю імені З. А. Матвієнко, 2018-{% now "Y" %}
-          </small>
-        </div>
-        <div class="ml-auto">
-          <small class="text-muted">вер.{% version_number %} від {% version_date %} р.</small>
-        </div>
-      </div>
-    </footer>
-
     <div class="container pt-3">
 
       {% if messages %}
@@ -113,6 +100,19 @@
       {% endblock content %}
 
     </div> <!-- /container -->
+
+    <footer class="footer">
+      <div class="container-fluid d-flex">
+        <div>
+          <small>
+            &copy; Вараський міський центр комплексної реабілітації для осіб з інвалідністю імені З. А. Матвієнко, 2018-{% now "Y" %}
+          </small>
+        </div>
+        <div class="ml-auto">
+          <small>вер.{% version_number %} від {% version_date %} р.</small>
+        </div>
+      </div>
+    </footer>
 
     {% block modal %}{% endblock modal %}
 
