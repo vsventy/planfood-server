@@ -1,15 +1,19 @@
 import json
 import logging
 import os
+from copy import copy
 from datetime import datetime
 from typing import Any, Dict
 
 from django.conf import settings
 from django.db.models import Q
+from django.utils import translation
+from django.utils.formats import date_format
 
 from openpyxl import load_workbook
 from openpyxl.formula.translate import Translator
 from openpyxl.styles.alignment import Alignment
+from openpyxl.worksheet.properties import PageSetupProperties
 from celery.task import task
 
 from planfood.common.models import Group
@@ -21,7 +25,7 @@ from planfood.common.utils import (
 )
 from .models import MenuDay
 
-FIRST_NORMS_ANALYSIS_ROW = 5
+FIRST_NORMS_ANALYSIS_ROW = 8
 
 logger = logging.getLogger(__name__)
 
@@ -121,9 +125,10 @@ def create_norms_analysis_report(start_date, end_date, id_group):
     for worksheet_name in workbook.sheetnames:
         worksheet = workbook[worksheet_name]
 
-        worksheet['A1'].value = worksheet['A1'].value.format(
-            start_date=start_date.strftime('%d.%m.%Y'),
-            end_date=end_date.strftime('%d.%m.%Y'),
+        translation.activate('uk')
+        worksheet['A3'].value = worksheet['A3'].value.format(
+            month=date_format(start_date, 'F').upper(),
+            year=end_date.strftime('%Y'),
             group_name=group.name,
             age_category_name=worksheet_name,
         )
@@ -138,9 +143,8 @@ def create_norms_analysis_report(start_date, end_date, id_group):
     format_norms_analysis_workbook(workbook, numbers_of_rows, sorted_product_categories)
 
     group_name = group.name.replace(', ', '_').replace(' ', '_')
-    report_file = '{start_date}_{end_date}_{group}.xlsx'.format(
-        start_date=start_date.strftime('%Y-%m-%d'),
-        end_date=end_date.strftime('%Y-%m-%d'),
+    report_file = '{month}_{group}.xlsx'.format(
+        month=start_date.strftime('%Y-%m'),
         group=group_name,
     )
     workbook.save(f"{settings.REPORTS_DIR}/{report_file}")
@@ -194,7 +198,7 @@ def fill_norms_analysis_workbook(workbook, product_categories):
                     elif day_count == 20:
                         col_index += 4
                     worksheet.cell(
-                        row=FIRST_NORMS_ANALYSIS_ROW - 1, column=col_index, value=day
+                        row=FIRST_NORMS_ANALYSIS_ROW - 2, column=col_index, value=day
                     )
                     worksheet.cell(
                         row=FIRST_NORMS_ANALYSIS_ROW + index,
@@ -255,6 +259,13 @@ def fill_norms_analysis_workbook(workbook, product_categories):
 
 
 def format_norms_analysis_workbook(workbook, number_of_rows, product_categories):
+    worksheet = workbook.active
+    base_page_setup = copy(worksheet.page_setup)
+    base_page_margins = copy(worksheet.page_margins)
+    base_sheet_properties = copy(worksheet.sheet_properties)
+    base_print_title_cols = copy(worksheet.print_title_cols)
+    base_print_title_rows = copy(worksheet.print_title_rows)
+
     for worksheet_name in workbook.sheetnames:
         worksheet = workbook[worksheet_name]
 
@@ -283,3 +294,10 @@ def format_norms_analysis_workbook(workbook, number_of_rows, product_categories)
                 set_text_style(cell, italic=True)
                 set_alignment(cell, 2)
                 index += 1
+
+        # clone worksheet settings
+        worksheet.page_setup = base_page_setup
+        worksheet.page_margins = base_page_margins
+        worksheet.sheet_properties = base_sheet_properties
+        worksheet.print_title_cols = base_print_title_cols
+        worksheet.print_title_rows = base_print_title_rows

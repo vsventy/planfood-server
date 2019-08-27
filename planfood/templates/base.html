@@ -33,6 +33,7 @@
 
     <link href="{% static 'css/project.css' %}" rel="stylesheet">
     <link href="{% static 'css/site.css' %}" rel="stylesheet">
+    <link href="{% static 'css/fixed-navbar.css' %}" rel="stylesheet">
     <link href="{% static 'css/sticky-footer.css' %}" rel="stylesheet">
 
 
@@ -42,8 +43,8 @@
 
   <body>
 
-    <div class="m-b-1">
-      <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <header>
+      <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -74,23 +75,17 @@
               </li>
             {% endif %}
           </ul>
+          {% if request.user.is_authenticated %}
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <span class="nav-link welcome disabled">Вітаємо, {{ user.username }}!</span>
+            </li>
+          </ul>
+          {% endif %}
         </div>
       </nav>
 
-    </div>
-
-    <footer class="footer">
-      <div class="container d-flex">
-        <div class="text-truncate">
-          <small class="text-muted">
-            &copy; Вараський міський центр комплексної реабілітації для осіб з інвалідністю імені З. А. Матвієнко, 2018-{% now "Y" %}
-          </small>
-        </div>
-        <div class="ml-auto text-truncate">
-          <small class="text-muted">вер.{% version_number %} від {% version_date %} р.</small>
-        </div>
-      </div>
-    </footer>
+    </header>
 
     <div class="container pt-3">
 
@@ -105,6 +100,19 @@
       {% endblock content %}
 
     </div> <!-- /container -->
+
+    <footer class="footer">
+      <div class="container-fluid d-flex">
+        <div>
+          <small>
+            &copy; Вараський міський центр комплексної реабілітації для осіб з інвалідністю імені З. А. Матвієнко, 2018-{% now "Y" %}
+          </small>
+        </div>
+        <div class="ml-auto">
+          <small>вер.{% version_number %} від {% version_date %} р.</small>
+        </div>
+      </div>
+    </footer>
 
     {% block modal %}{% endblock modal %}
 
