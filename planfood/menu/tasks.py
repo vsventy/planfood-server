@@ -107,7 +107,11 @@ def create_norms_analysis_report(start_date, end_date, id_group):
                             menu_day_key
                         ] = calculated_products_norms
 
-    report_path = 'spreadsheets/norms_analysis_20d.xlsx'
+    report_path = 'spreadsheets/norms_analysis_{}d.xlsx'
+    menu_days_count = len(menu_days)
+    report_path = (
+        report_path.format(20) if menu_days_count <= 20 else report_path.format(31)
+    )
     abs_report_path = str(settings.ROOT_DIR.path(report_path))
     workbook = load_workbook(abs_report_path)
 
@@ -140,12 +144,13 @@ def create_norms_analysis_report(start_date, end_date, id_group):
     sorted_product_categories = dict(sorted(product_categories.items()))
 
     numbers_of_rows = fill_norms_analysis_workbook(workbook, sorted_product_categories)
-    format_norms_analysis_workbook(workbook, numbers_of_rows, sorted_product_categories)
+    format_norms_analysis_workbook(
+        workbook, numbers_of_rows, menu_days_count, sorted_product_categories
+    )
 
     group_name = group.name.replace(', ', '_').replace(' ', '_')
     report_file = '{month}_{group}.xlsx'.format(
-        month=start_date.strftime('%Y-%m'),
-        group=group_name,
+        month=start_date.strftime('%Y-%m'), group=group_name
     )
     workbook.save(f"{settings.REPORTS_DIR}/{report_file}")
     results = {'report_path': f"{settings.MEDIA_URL}reports/{report_file}"}
@@ -196,7 +201,7 @@ def fill_norms_analysis_workbook(workbook, product_categories):
                     if day_count == 10:
                         col_index += 2
                     elif day_count == 20:
-                        col_index += 4
+                        col_index += 2
                     worksheet.cell(
                         row=FIRST_NORMS_ANALYSIS_ROW - 2, column=col_index, value=day
                     )
@@ -236,29 +241,54 @@ def fill_norms_analysis_workbook(workbook, product_categories):
             average_by_days.value = '=IFERROR(AVERAGEIF(P{}:Y{},">=0"),0)'.format(
                 category_row, category_row
             )
-
             delta_result = worksheet.cell(row=category_row, column=4 + 11)
             delta_result.value = '=N{}-C{}'.format(category_row, category_row)
             delta_result = worksheet.cell(row=category_row, column=4 + 23)
             delta_result.value = '=Z{}-C{}'.format(category_row, category_row)
 
-            average_month_result = worksheet.cell(row=category_row, column=4 + 24)
-            average_month_result.value = '=IFERROR(AVERAGE(N{},Z{}),0)'.format(
-                category_row, category_row
-            )
-            delta_month_result = worksheet.cell(row=category_row, column=4 + 25)
-            delta_month_result.value = '=AB{}-C{}'.format(category_row, category_row)
-            completion_month = worksheet.cell(row=category_row, column=4 + 26)
-            completion_month.value = '=IFERROR(AB{}*100/C{},0)'.format(
-                category_row, category_row
-            )
+            if day_count > 20:
+                average_by_days = worksheet.cell(row=category_row, column=4 + 35)
+                average_by_days.value = '=IFERROR(AVERAGEIF(AB{}:AL{},">=0"),0)'.format(
+                    category_row, category_row
+                )
+                delta_result = worksheet.cell(row=category_row, column=4 + 36)
+                delta_result.value = '=AM{}-C{}'.format(category_row, category_row)
+
+                average_month_result = worksheet.cell(row=category_row, column=4 + 37)
+                average_month_result.value = '=IFERROR(AVERAGE(N{},Z{},AM{}),0)'.format(
+                    category_row, category_row, category_row
+                )
+                delta_month_result = worksheet.cell(row=category_row, column=4 + 38)
+                delta_month_result.value = '=AO{}-C{}'.format(
+                    category_row, category_row
+                )
+                completion_month = worksheet.cell(row=category_row, column=4 + 39)
+                completion_month.value = '=IFERROR(AO{}*100/C{},0)'.format(
+                    category_row, category_row
+                )
+            else:
+
+                average_month_result = worksheet.cell(row=category_row, column=4 + 24)
+                average_month_result.value = '=IFERROR(AVERAGE(N{},Z{}),0)'.format(
+                    category_row, category_row
+                )
+                delta_month_result = worksheet.cell(row=category_row, column=4 + 25)
+                delta_month_result.value = '=AB{}-C{}'.format(
+                    category_row, category_row
+                )
+                completion_month = worksheet.cell(row=category_row, column=4 + 26)
+                completion_month.value = '=IFERROR(AB{}*100/C{},0)'.format(
+                    category_row, category_row
+                )
 
         worksheet_index += 1
 
     return index
 
 
-def format_norms_analysis_workbook(workbook, number_of_rows, product_categories):
+def format_norms_analysis_workbook(
+    workbook, number_of_rows, menu_days_count, product_categories
+):
     worksheet = workbook.active
     base_page_setup = copy(worksheet.page_setup)
     base_page_margins = copy(worksheet.page_margins)
@@ -270,15 +300,16 @@ def format_norms_analysis_workbook(workbook, number_of_rows, product_categories)
         worksheet = workbook[worksheet_name]
 
         first_cell = worksheet.cell(row=FIRST_NORMS_ANALYSIS_ROW, column=1)
+        number_of_columns = 30 if menu_days_count <= 20 else 43
         for i in range(number_of_rows):
-            for j in range(30):
+            for j in range(number_of_columns):
                 active_cell = worksheet.cell(
                     row=first_cell.row + i, column=first_cell.column + j
                 )
                 clone_cell_style(first_cell, active_cell)
-                if j in (2, 13, 14) or j > 24:
+                if j in (2, 13, 14, 25, 26, 38, 39) or j > (number_of_columns - 4):
                     active_cell.alignment = Alignment(horizontal='center')
-                if j in (13, 14) or j > 24:
+                if j in (13, 14, 25, 26, 38, 39) or j > (number_of_columns - 4):
                     active_cell.number_format = '0.0'
 
         index = 0
