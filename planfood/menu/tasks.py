@@ -308,7 +308,11 @@ def format_norms_analysis_workbook(
                 )
                 clone_cell_style(first_cell, active_cell)
                 if j in (2, 13, 14, 25, 26, 38, 39) or j > (number_of_columns - 4):
-                    active_cell.alignment = Alignment(horizontal='center')
+                    active_cell.alignment = Alignment(
+                        horizontal='center', vertical='top'
+                    )
+                else:
+                    active_cell.alignment = Alignment(vertical='top')
                 if j in (13, 14, 25, 26, 38, 39) or j > (number_of_columns - 4):
                     active_cell.number_format = '0.0'
 
