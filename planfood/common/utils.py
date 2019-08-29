@@ -47,7 +47,7 @@ def set_text_style(cell, name='Arial', size=10.0, bold=False, italic=False):
 
 
 def set_alignment(cell, indent=0):
-    cell.alignment = Alignment(indent=indent)
+    cell.alignment = cell.alignment.copy(indent=indent)
 
 
 def render_worksheet(worksheet, d, min_row=1, max_column=20, max_row=200):
