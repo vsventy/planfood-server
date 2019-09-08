@@ -1,6 +1,12 @@
 import logging
 import os
 
+import sentry_sdk
+
+from sentry_sdk.integrations.django import DjangoIntegration
+from sentry_sdk.integrations.logging import LoggingIntegration
+from sentry_sdk.integrations.celery import CeleryIntegration
+
 from .base import *  # noqa
 from .base import env
 
@@ -118,20 +124,12 @@ REPORTS_DIR = env('REPORTS_DIR', default=os.path.join(MEDIA_ROOT, 'reports'))
 if not os.path.exists(MEDIA_ROOT) or not os.path.exists(REPORTS_DIR):
     os.makedirs(REPORTS_DIR)
 
-# raven
+# LOGGING
 # ------------------------------------------------------------------------------
-# https://docs.sentry.io/clients/python/integrations/django/
-INSTALLED_APPS += ['raven.contrib.django.raven_compat']  # noqa F405
-MIDDLEWARE = [
-    'raven.contrib.django.raven_compat.middleware.SentryResponseErrorIdMiddleware'
-] + MIDDLEWARE
+# https://docs.djangoproject.com/en/dev/ref/settings/#logging
+# See https://docs.djangoproject.com/en/dev/topics/logging for
+# more details on how to customize your logging configuration.
 
-# Sentry
-# ------------------------------------------------------------------------------
-SENTRY_DSN = env('SENTRY_DSN')
-SENTRY_CLIENT = env(
-    'DJANGO_SENTRY_CLIENT', default='raven.contrib.django.raven_compat.DjangoClient'
-)
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
@@ -143,10 +141,6 @@ LOGGING = {
         }
     },
     'handlers': {
-        'sentry': {
-            'level': 'ERROR',
-            'class': 'raven.contrib.django.raven_compat.handlers.SentryHandler',
-        },
         'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
@@ -159,22 +153,30 @@ LOGGING = {
             'handlers': ['console'],
             'propagate': False,
         },
-        'raven': {'level': 'DEBUG', 'handlers': ['console'], 'propagate': False},
-        'sentry.errors': {
-            'level': 'DEBUG',
-            'handlers': ['console'],
-            'propagate': False,
-        },
+        # Errors logged by the SDK itself
+        'sentry_sdk': {'level': 'ERROR', 'handlers': ['console'], 'propagate': False},
         'django.security.DisallowedHost': {
             'level': 'ERROR',
-            'handlers': ['console', 'sentry'],
+            'handlers': ['console'],
             'propagate': False,
         },
     },
 }
 
-SENTRY_CELERY_LOGLEVEL = env.int('DJANGO_SENTRY_LOG_LEVEL', logging.INFO)
-RAVEN_CONFIG = {'dsn': SENTRY_DSN}
+# Sentry
+# ------------------------------------------------------------------------------
+SENTRY_DSN = env('SENTRY_DSN')
+SENTRY_LOG_LEVEL = env.int('DJANGO_SENTRY_LOG_LEVEL', logging.INFO)
+
+sentry_logging = LoggingIntegration(
+    level=SENTRY_LOG_LEVEL,  # Capture info and above as breadcrumbs
+    event_level=logging.ERROR,  # Send errors as events
+)
+sentry_sdk.init(
+    dsn=SENTRY_DSN,
+    integrations=[sentry_logging, DjangoIntegration(), CeleryIntegration()],
+)
+
 # Your stuff...
 # ------------------------------------------------------------------------------
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
