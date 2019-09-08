@@ -133,7 +133,7 @@ if not os.path.exists(MEDIA_ROOT) or not os.path.exists(REPORTS_DIR):
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
-    'root': {'level': 'WARNING', 'handlers': ['sentry']},
+    'root': {'level': 'INFO', 'handlers': ['console']},
     'formatters': {
         'verbose': {
             'format': '%(levelname)s %(asctime)s %(module)s '
