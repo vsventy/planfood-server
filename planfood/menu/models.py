@@ -78,7 +78,7 @@ class NumberOfPersons(TimeStampedModel):
 class DishItem(TimeStampedModel):
     PERIOD = Choices(
         (0, 'breakfast', _('Breakfast')),
-        (1, 'after_breakfast', '10:35 / 11:00'),
+        (1, 'after_breakfast', '10:00'),
         (2, 'lunch', _('Lunch')),  # old value: 1
         (3, 'after_lunch', '15:00 / 15:45'),  # old value: 2
         (4, 'dinner', _('Dinner')),  # old value: 3
