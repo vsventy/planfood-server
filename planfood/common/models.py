@@ -81,6 +81,9 @@ class DefaultSettings(TimeStampedModel):
     storekeeper_initials = models.CharField(
         verbose_name=_('Storekeeper initials'), max_length=255
     )
+    cook_initials = models.CharField(
+        verbose_name=_('Cook initials'), max_length=255, blank=True, null=True
+    )
 
     class Meta:
         verbose_name_plural = _('Default Settings')

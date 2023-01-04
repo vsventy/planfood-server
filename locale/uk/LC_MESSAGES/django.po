@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-14 22:41+0300\n"
+"POT-Creation-Date: 2023-01-04 13:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: config/settings/base.py:34
 msgid "Ukrainian"
@@ -28,7 +28,7 @@ msgid "English"
 msgstr "Англійська"
 
 #: config/urls.py:16 config/urls.py:17 planfood/templates/base.html:8
-#: planfood/templates/base.html:51
+#: planfood/templates/base.html:52
 msgid "Plan Food"
 msgstr "Облік харчування"
 
@@ -107,7 +107,7 @@ msgstr "Категорія продукту"
 
 #: planfood/common/models.py:71
 msgid "Director initials"
-msgstr "Директор (П. І. П.)"
+msgstr "Директор (ПІБ)"
 
 #: planfood/common/models.py:73
 msgid "Nurse post"
@@ -115,7 +115,7 @@ msgstr "Дієтсестра (посада)"
 
 #: planfood/common/models.py:74
 msgid "Nurse initials"
-msgstr "Дієтсестра (П. І. П.)"
+msgstr "Дієтсестра (ПІБ)"
 
 #: planfood/common/models.py:76
 msgid "Senior nurse post"
@@ -123,13 +123,17 @@ msgstr "Ст. медсестра (посада)"
 
 #: planfood/common/models.py:79
 msgid "Senior nurse initials"
-msgstr "Ст. медсестра (П. І. П.)"
+msgstr "Ст. медсестра (ПІБ)"
 
 #: planfood/common/models.py:82
 msgid "Storekeeper initials"
-msgstr "Комірник (П. І. П.)"
+msgstr "Комірник (ПІБ)"
 
-#: planfood/common/models.py:86 planfood/common/models.py:87
+#: planfood/common/models.py:85
+msgid "Cook initials"
+msgstr "Кухар (ПІБ)"
+
+#: planfood/common/models.py:89 planfood/common/models.py:90
 msgid "Default Settings"
 msgstr "Базові налаштування"
 
@@ -154,7 +158,7 @@ msgstr "Картотека страв"
 msgid "Products"
 msgstr "Продукти"
 
-#: planfood/dishes/models.py:30 planfood/menu/models.py:95
+#: planfood/dishes/models.py:30 planfood/menu/models.py:96
 msgid "Dishes"
 msgstr "Страви"
 
@@ -249,7 +253,7 @@ msgid "Menu days"
 msgstr "Меню-дні"
 
 #: planfood/menu/models.py:24 planfood/menu/models.py:53
-#: planfood/menu/models.py:88
+#: planfood/menu/models.py:89
 msgid "Menu day"
 msgstr "Меню-день"
 
@@ -277,31 +281,27 @@ msgstr "Кількість осіб"
 msgid "Breakfast"
 msgstr "Сніданок"
 
-#: planfood/menu/models.py:81
+#: planfood/menu/models.py:82
 msgid "Lunch"
 msgstr "Обід"
 
-#: planfood/menu/models.py:82
-msgid "Afternoon Snack"
-msgstr "Полуденок"
-
-#: planfood/menu/models.py:83
+#: planfood/menu/models.py:84
 msgid "Dinner"
 msgstr "Вечеря"
 
-#: planfood/menu/models.py:84
+#: planfood/menu/models.py:85
 msgid "Tea"
 msgstr "Підвечірок"
 
-#: planfood/menu/models.py:98
+#: planfood/menu/models.py:99
 msgid "Period"
 msgstr "Період"
 
-#: planfood/menu/models.py:101
+#: planfood/menu/models.py:102
 msgid "Set of dishes"
 msgstr "Набір страв"
 
-#: planfood/menu/models.py:102
+#: planfood/menu/models.py:103
 msgid "Dish item"
 msgstr "Позиція страви"
 
@@ -431,13 +431,13 @@ msgstr ""
 #: planfood/templates/account/email_confirm.html:27
 #, python-format
 msgid ""
-"This e-mail confirmation link expired or is invalid. Please <a href="
-"\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+"This e-mail confirmation link expired or is invalid. Please <a "
+"href=\"%(email_url)s\">issue a new e-mail confirmation request</a>."
 msgstr ""
 
 #: planfood/templates/account/login.html:7
 #: planfood/templates/account/login.html:11
-#: planfood/templates/account/login.html:44 planfood/templates/base.html:73
+#: planfood/templates/account/login.html:44 planfood/templates/base.html:74
 msgid "Sign In"
 msgstr ""
 
@@ -467,7 +467,7 @@ msgstr ""
 
 #: planfood/templates/account/logout.html:5
 #: planfood/templates/account/logout.html:8
-#: planfood/templates/account/logout.html:17 planfood/templates/base.html:68
+#: planfood/templates/account/logout.html:17 planfood/templates/base.html:69
 msgid "Sign Out"
 msgstr ""
 
@@ -598,37 +598,41 @@ msgid ""
 "mail address</a>."
 msgstr ""
 
-#: planfood/templates/base.html:57
+#: planfood/templates/admin/base_site.html:6
+msgid "Django site admin"
+msgstr ""
+
+#: planfood/templates/base.html:58
 msgid "Home"
 msgstr "Головна"
 
-#: planfood/templates/base.html:61
+#: planfood/templates/base.html:62
 #, fuzzy
 #| msgid "Site administration"
 msgid "Administration"
 msgstr "Адміністрування сайту"
 
-#: planfood/templates/base.html:64
+#: planfood/templates/base.html:65
 msgid "Norms Analysis"
 msgstr "Аналіз норм"
 
-#: planfood/templates/menu/home.html:11
+#: planfood/templates/menu/home.html:17
 msgid "Norms Analysis Report"
 msgstr "Аналіз виконання норм"
 
-#: planfood/templates/menu/home.html:17
+#: planfood/templates/menu/home.html:23
 msgid "Generate Report"
 msgstr "Сформувати Звіт"
 
-#: planfood/templates/menu/home.html:38
+#: planfood/templates/menu/home.html:44
 msgid "Check downloads for results"
 msgstr "Перейдіть в \"Завантаження\" для ознайомлення з результатом"
 
-#: planfood/templates/menu/home.html:49
+#: planfood/templates/menu/home.html:55
 msgid "An error occurred"
 msgstr "Виникла помилка"
 
-#: planfood/templates/menu/home.html:63
+#: planfood/templates/menu/home.html:69
 msgid "Generating report"
 msgstr "Генерація звіту"
 
@@ -647,6 +651,9 @@ msgstr "Ім'я користувача"
 #: planfood/users/models.py:12
 msgid "Can show logged users"
 msgstr "Може переглядати залогінених користувачів"
+
+#~ msgid "Afternoon Snack"
+#~ msgstr "Полуденок"
 
 #~ msgid "Month"
 #~ msgstr "Місяць"
