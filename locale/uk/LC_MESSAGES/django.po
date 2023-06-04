@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-04 13:53+0200\n"
+"POT-Creation-Date: 2023-06-04 22:47+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -126,14 +126,18 @@ msgid "Senior nurse initials"
 msgstr "Ст. медсестра (ПІБ)"
 
 #: planfood/common/models.py:82
+msgid "Storekeeper post"
+msgstr "Комірник (посада)"
+
+#: planfood/common/models.py:85
 msgid "Storekeeper initials"
 msgstr "Комірник (ПІБ)"
 
-#: planfood/common/models.py:85
+#: planfood/common/models.py:88
 msgid "Cook initials"
 msgstr "Кухар (ПІБ)"
 
-#: planfood/common/models.py:89 planfood/common/models.py:90
+#: planfood/common/models.py:92 planfood/common/models.py:93
 msgid "Default Settings"
 msgstr "Базові налаштування"
 
@@ -305,11 +309,11 @@ msgstr "Набір страв"
 msgid "Dish item"
 msgstr "Позиція страви"
 
-#: planfood/menu/views.py:81
+#: planfood/menu/views.py:83
 msgid "No menu day selected."
 msgstr ""
 
-#: planfood/menu/views.py:89
+#: planfood/menu/views.py:91
 msgid "No default settings. Please set them in the admin panel and try again."
 msgstr ""
 
