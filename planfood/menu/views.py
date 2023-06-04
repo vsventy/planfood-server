@@ -62,6 +62,7 @@ def init_menu_dict():
             'nurse_initials',
             'senior_nurse_post',
             'senior_nurse_initials',
+            'storekeeper_post',
             'storekeeper_initials',
             'cook_initials',
         ],
@@ -149,6 +150,7 @@ def fill_workbook(workbook, settings, menu_day, menu_cells, demand_cells):
     d['nurse_initials'] = settings.nurse_initials
     d['senior_nurse_post'] = settings.senior_nurse_post
     d['senior_nurse_initials'] = settings.senior_nurse_initials
+    d['storekeeper_post'] = settings.storekeeper_post
     d['storekeeper_initials'] = settings.storekeeper_initials
     d['cook_initials'] = settings.cook_initials
 

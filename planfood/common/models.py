@@ -78,6 +78,9 @@ class DefaultSettings(TimeStampedModel):
     senior_nurse_initials = models.CharField(
         verbose_name=_('Senior nurse initials'), max_length=255
     )
+    storekeeper_post = models.CharField(
+        verbose_name=_('Storekeeper post'), max_length=255, blank=True, null=True
+    )
     storekeeper_initials = models.CharField(
         verbose_name=_('Storekeeper initials'), max_length=255
     )
