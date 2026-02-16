@@ -10,6 +10,8 @@ from openpyxl.styles.alignment import Alignment
 
 logger = logging.getLogger(__name__)
 
+def trigger_error(request):
+    division_by_zero = 1 / 0
 
 def set_cells_border(worksheet, row, start_column, end_column, border=None):
     if border is None:

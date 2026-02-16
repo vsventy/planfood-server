@@ -9,6 +9,7 @@ from django.views.generic import TemplateView
 from django.views.generic.base import RedirectView
 from django.views import defaults as default_views
 
+from planfood.common.utils import trigger_error
 from planfood.common.views import TaskView, serve_protected_document
 from planfood.menu.views import NormsAnalysisView
 
@@ -42,6 +43,7 @@ urlpatterns = [
         serve_protected_document,
         {'document_root': settings.MEDIA_ROOT},
     ),
+    path('sentry-debug/', trigger_error),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += i18n_patterns(
