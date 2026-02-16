@@ -5,6 +5,7 @@
 gunicorn==19.9.0  # https://github.com/benoitc/gunicorn
 psycopg2==2.8.3 --no-binary psycopg2  # https://github.com/psycopg/psycopg2
 sentry-sdk==2.53.0  # https://github.com/getsentry/sentry-python
+aiocontextvars  # support for the contextvars backport library
 
 # Django
 # ------------------------------------------------------------------------------
